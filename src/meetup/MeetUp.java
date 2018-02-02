@@ -21,6 +21,9 @@ public class MeetUp {
         
         ArrayList<Student.Friend> bobs_friends = new ArrayList<>();
         //bobs_friends.add(friend_of_bob_1);
+        //bobs_friends.add(friend_of_bob_1);
+        //bobs_friends.add(friend_of_bob_1);
+        //bobs_friends.add(friend_of_bob_1);
         
         ArrayList<Student.Schedule> bobs_schedule = new ArrayList<>();
         

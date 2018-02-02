@@ -22,9 +22,11 @@ public class MeetUp {
         bobs_friends.add(friend_of_bob_2);
         bobs_friends.add(friend_of_bob_3);
         ArrayList<Schedule> bobs_schedule = new ArrayList<>();
-        Admin admin_andy = new Admin(100, "Andy");
+        bobs_schedule.add(schedule_of_bob_1);
+        bobs_schedule.add(schedule_of_bob_2);
+        Admin admin_andy = new Admin(1000, "Andy");
         Student student_bob = new Student(1001, "Bob", false, false, bobs_friends, bobs_schedule);
-        ArrayList<User> collection = new ArrayList<User>();
+        ArrayList<User> collection = new ArrayList<>();
         collection.add(admin_andy);
         collection.add(student_bob);
         printMe(collection);  
@@ -35,14 +37,35 @@ public class MeetUp {
     public static void printMe(ArrayList<User> c) {
         for(int i = 0; i < c.size(); i++) {
             
-            // This works, superclass (abstract) member found
-            String name = c.get(i).name;
+            System.out.println("\n------------------");
+            System.out.println("ID: " + c.get(i).id);
             System.out.println("Name: " + c.get(i).name);
-            
-            // ERROR - subclass member not found
-            String ban = c.get(i).getBan();
-            System.out.println("Banned : " + c.get(i).getBan()); 
+            String class_name = c.get(i).getClass().getSimpleName();
+            Student s;
+            if (class_name.equals("Student")) {
+                System.out.println("User type: Student");
+                s = (Student) c.get(i);
+                int friend_count = s.friends.size();
+                System.out.println(s.name + " has " + friend_count + " friends.");
+                System.out.println("Schedule is as follows: ");
+                s.schedule.forEach((schedule) -> {
+                    String task_name = schedule.name;
+                    String task_location = schedule.location;
+                    String task_date = schedule.time;
+                    System.out.println("\t" + task_name + " at " + task_location + " on " + task_date);
+                });
+                System.out.println( "\n" );
 
+            } else {
+                int student_count = 0;
+                for(int j = 0; j < c.size(); j++) {
+                    String student_obj = c.get(j).getClass().getSimpleName();
+                    student_count += ((student_obj.equals("Student")) ? 1 : 0);
+                }
+                System.out.println("User type: Admin");
+                System.out.println("Student count: " + student_count);
+                System.out.println( "\n" );
+            }
         }
     }
     

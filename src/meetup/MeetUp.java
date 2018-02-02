@@ -43,7 +43,7 @@ public class MeetUp {
             
             // ERROR - arrayList member not found
             int friend_count = c.get(i).friends.size();
-            System.out.println(friend_count);
+            System.out.println(friend_count + " friends.");
         }
     }
     

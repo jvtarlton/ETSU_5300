@@ -40,6 +40,8 @@ public class MeetUp {
     public static void printMe(ArrayList<User> c) {
         for(int i = 0; i < c.size(); i++) {
             System.out.println(c.get(i).name + " has " );
+            
+            // ERROR - arrayList member not found
             int friend_count = c.get(i).friends.size();
             System.out.println(friend_count);
         }

@@ -21,17 +21,41 @@ public class MeetUp {
         bobs_friends.add(friend_of_bob_2);
         bobs_friends.add(friend_of_bob_3);
         
+        Friend friend_of_carl_1 = new Friend(1001, false);
+        Friend friend_of_carl_2 = new Friend(1003, false);
+        ArrayList<Friend> carls_friends = new ArrayList<>();
+        carls_friends.add(friend_of_carl_1);
+        carls_friends.add(friend_of_carl_2);
+        
+        Friend friend_of_dan_1 = new Friend(1001, false);
+        Friend friend_of_dan_2 = new Friend(1002, true);
+        ArrayList<Friend> dans_friends = new ArrayList<>();
+        dans_friends.add(friend_of_dan_1);
+        dans_friends.add(friend_of_dan_2);
+        
         Schedule schedule_of_bob_1 = new Schedule(1, "Study group", "2/2/18", "Sherrod Library");
         Schedule schedule_of_bob_2 = new Schedule(2, "Yoga practice", "2/3/18", "BCPA");
         ArrayList<Schedule> bobs_schedule = new ArrayList<>();
         bobs_schedule.add(schedule_of_bob_1);
         bobs_schedule.add(schedule_of_bob_2);
         
+        Schedule schedule_of_carl_1 = new Schedule(1, "Study group", "2/2/18", "Sherrod Library");
+        ArrayList<Schedule> carls_schedule = new ArrayList<>();
+        carls_schedule.add(schedule_of_carl_1);
+        
+        Schedule schedule_of_dan_1 = new Schedule(1, "Study group", "2/2/18", "Sherrod Library");
+        ArrayList<Schedule> dans_schedule = new ArrayList<>();
+        dans_schedule.add(schedule_of_dan_1);
+        
         Admin admin_andy = new Admin(1000, "Andy");
         Student student_bob = new Student(1001, "Bob", false, false, bobs_friends, bobs_schedule);
+        Student student_carl = new Student(1002, "Carl", true, false, carls_friends, carls_schedule);
+        Student student_dan = new Student(1003, "Dan", true, true, dans_friends, dans_schedule);
         ArrayList<User> collection = new ArrayList<>();
         collection.add(admin_andy);
         collection.add(student_bob);
+        collection.add(student_carl);
+        collection.add(student_dan);
         
         printMe(collection);  
     }

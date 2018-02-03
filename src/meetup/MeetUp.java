@@ -11,7 +11,8 @@ import java.util.*;
  * This class is a test case for instantiating the abstract User through
  * either Admin or Student class and aggregating their corresponding 
  * subclasses into collections.
- * @author Jim
+ * 
+ * @author Jim Tarlton
  */
 public class MeetUp {
     

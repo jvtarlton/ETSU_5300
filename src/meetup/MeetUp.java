@@ -43,20 +43,21 @@ public class MeetUp {
         
         // student 1 Schedule collection
         ArrayList<Schedule> bobs_schedule = new ArrayList<>();
-        Schedule schedule_of_bob_1 = new Schedule(1, "Study group", "2/2/18", "Sherrod Library");
-        Schedule schedule_of_bob_2 = new Schedule(2, "Yoga practice", "2/3/18", "BCPA");
+        Schedule schedule_of_bob_1 = new Schedule(1, "CSCI-1100", "2/2/18 10:00 AM", "Gilbreath Hall");
+        Schedule schedule_of_bob_2 = new Schedule(2, "CSCI-1200", "2/3/18 11:15 AM", "Nicks Hall");
         bobs_schedule.add(schedule_of_bob_1);
         bobs_schedule.add(schedule_of_bob_2);
         
         // student 2 Schedule collection
         ArrayList<Schedule> carls_schedule = new ArrayList<>();
-        Schedule schedule_of_carl_1 = new Schedule(1, "Study group", "2/2/18", "Sherrod Library");
+        Schedule schedule_of_carl_1 = new Schedule(1, "CSCI-1100", "2/2/18 10:00 AM", "Gilbreath Hall");
+        Schedule schedule_of_carl_2 = new Schedule(2, "CSCI-1300", "2/2/18 12:00 PM", "Nicks Hall");
         carls_schedule.add(schedule_of_carl_1);
+        carls_schedule.add(schedule_of_carl_2);
         
         // student 3 Schedule collection
         ArrayList<Schedule> dans_schedule = new ArrayList<>();
-        Schedule schedule_of_dan_1 = new Schedule(1, "Study group", "2/2/18", "Sherrod Library");
-        carls_schedule.add(schedule_of_carl_1);
+        Schedule schedule_of_dan_1 = new Schedule(1, "ENG-4400", "2/3/18", "Sherrod Library");
         dans_schedule.add(schedule_of_dan_1);
         
         // User collection

@@ -1,6 +1,10 @@
 
 package meetup;
 
+/**
+ *
+ * @author Jim
+ */
 public class Schedule {
     
     protected int id;

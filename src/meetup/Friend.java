@@ -1,9 +1,14 @@
 
 package meetup;
 
+/**
+ *
+ * @author Jim
+ */
 public class Friend {
-    int id;
-    boolean blocked;
+    
+    protected int id;
+    protected boolean blocked;
     
     public Friend(int i, boolean b) {
         this.id = i;
@@ -11,6 +16,6 @@ public class Friend {
     }
     public void toggleBlock() {
         this.blocked = !this.blocked;
-        //this.blocked = this.blocked ? false : true;
     }
+    
 }

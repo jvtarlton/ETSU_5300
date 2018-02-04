@@ -25,55 +25,55 @@ public class MeetUp {
             Arrays.asList(
                     
                 // User type Admin
-                new Admin(1000, "Andy"),
+                Admin.make(1000, "Andy"),
                 
                 // User type Student
-                new Student(
+                Student.make(
                     1001, "Bob", false, false, 
                     Arrays.asList(
-                        new Friend(1002, false),
-                        new Friend(1003, false),
-                        new Friend(1004, false)
+                        Friend.make(1002, false),
+                        Friend.make(1003, false),
+                        Friend.make(1004, false)
                     ),
                     Arrays.asList(
-                        new Schedule(1, "CSCI-1100", "2/2/18 10:00 AM", "Gilbreath Hall"),
-                        new Schedule(2, "CSCI-1200", "2/3/18 11:15 AM", "Nicks Hall")
+                        Schedule.make(1, "CSCI-1100", "2/2/18 10:00 AM", "Gilbreath Hall"),
+                        Schedule.make(2, "CSCI-1200", "2/3/18 11:15 AM", "Nicks Hall")
                     )
                 ),
                 
                 // User type Student
-                new Student(
+                Student.make(
                     1002, "Carl", true, false,
                     Arrays.asList(
-                        new Friend(1001, false),
-                        new Friend(1003, true)
+                        Friend.make(1001, false),
+                        Friend.make(1003, true)
                     ),
                     Arrays.asList(
-                        new Schedule(1, "CSCI-1100", "2/2/18 10:00 AM", "Gilbreath Hall"),
-                        new Schedule(2, "CSCI-1300", "2/3/18 12:00 PM", "Nicks Hall")
+                        Schedule.make(1, "CSCI-1100", "2/2/18 10:00 AM", "Gilbreath Hall"),
+                        Schedule.make(2, "CSCI-1300", "2/3/18 12:00 PM", "Nicks Hall")
                     )
                 ),
                 
                 // User type Student
-                new Student(
+                Student.make(
                     1003, "Dan", true, true,
                     Arrays.asList(
-                        new Friend(1001, false)
+                        Friend.make(1001, false)
                     ),
                     Arrays.asList(
-                        new Schedule(1, "ENG-4400", "2/3/18", "Sherrod Library")
+                        Schedule.make(1, "ENG-4400", "2/3/18", "Sherrod Library")
                     )
                 ),
                 
                 // User type Student
-                new Student(
+                Student.make(
                     1004, "Eric", true, true,
                     Arrays.asList(
-                        new Friend(1002, false),
-                        new Friend(1003, false)
+                        Friend.make(1002, false),
+                        Friend.make(1003, false)
                     ),
                     Arrays.asList(
-                        new Schedule(1, "ENG-4400", "2/3/18", "Sherrod Library")
+                        Schedule.make(1, "ENG-4400", "2/3/18", "Sherrod Library")
                     )
                 )
             )

@@ -87,16 +87,16 @@ public class MeetUp {
     
     // manifest UI
     public static ArrayList<User> initializeUI(ArrayList<User> data) {
-        for(int i = 0; i < data.size(); i++) {
+        data.forEach((d) -> {
             // initialize UI data
-            if (data.get(i).getClass().getSimpleName().equals("Admin")) {
+            if (d.getClass().getSimpleName().equals("Admin")) {
                 // synchronize admin information here
-                ((Admin)data.get(i)).setStudentCount(data);
+                ((Admin)d).setStudentCount(data);
             } else {
                 // synchronize student messages, schedules, etc. here
-                ((Student)data.get(i)).findScheduleMatches();
+                ((Student)d).findScheduleMatches();
             }
-        }
+        });
         return data;
     }
     

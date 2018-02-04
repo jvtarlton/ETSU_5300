@@ -20,7 +20,7 @@ public class MeetUp {
         
         // User data literals
         // template array for UI, accepts Admin and Students
-        ArrayList<User> collection = new ArrayList<>(
+        ArrayList<User> data = new ArrayList<>(
                 
             Arrays.asList(
                     
@@ -80,7 +80,7 @@ public class MeetUp {
         );
         
         // initalize and populate UI
-        populateUI(initializeUI(collection));
+        populateUI(initializeUI(data));
         
     }
     
@@ -89,14 +89,12 @@ public class MeetUp {
     public static ArrayList<User> initializeUI(ArrayList<User> data) {
         for(int i = 0; i < data.size(); i++) {
             // initialize UI data
-            String class_name = data.get(i).getClass().getSimpleName();
-            if (class_name.equals("Admin")) {
+            if (data.get(i).getClass().getSimpleName().equals("Admin")) {
                 // synchronize admin information here
-                Admin admin = (Admin) data.get(i);
-                admin.setStudentCount(data);
+                ((Admin)data.get(i)).setStudentCount(data);
             } else {
                 // synchronize student messages, schedules, etc. here
-                Student student = (Student) data.get(i);
+                ((Student)data.get(i)).findScheduleMatches();
             }
         }
         return data;

@@ -58,8 +58,7 @@ public class MeetUp {
                 new Student(
                     1003, "Dan", true, true,
                     Arrays.asList(
-                        new Friend(1001, false),
-                        new Friend(1002, false)
+                        new Friend(1001, false)
                     ),
                     Arrays.asList(
                         new Schedule(1, "ENG-4400", "2/3/18", "Sherrod Library")
@@ -70,6 +69,7 @@ public class MeetUp {
                 new Student(
                     1004, "Eric", true, true,
                     Arrays.asList(
+                        new Friend(1002, false),
                         new Friend(1003, false)
                     ),
                     Arrays.asList(

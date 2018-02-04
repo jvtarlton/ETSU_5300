@@ -29,10 +29,10 @@ public class MeetUp {
                     Arrays.asList(
 
                         // User type Admin
-                        Admin.make(1000, "Andy"),
+                        User.make(1000, "Andy"),
 
                         // User type Student
-                        Student.make(
+                        User.make(
                             1001, "Bob", false, false, 
                             Arrays.asList(
                                 Friend.make(1002, false),
@@ -46,7 +46,7 @@ public class MeetUp {
                         ),
 
                         // User type Student
-                        Student.make(
+                        User.make(
                             1002, "Carl", true, false,
                             Arrays.asList(
                                 Friend.make(1001, false),
@@ -59,7 +59,7 @@ public class MeetUp {
                         ),
 
                         // User type Student
-                        Student.make(
+                        User.make(
                             1003, "Dan", true, true,
                             Arrays.asList(
                                 Friend.make(1001, false)
@@ -70,7 +70,7 @@ public class MeetUp {
                         ),
 
                         // User type Student
-                        Student.make(
+                        User.make(
                             1004, "Eric", true, true,
                             Arrays.asList(
                                 Friend.make(1002, false),
@@ -90,10 +90,10 @@ public class MeetUp {
     }
     
     
-    // manifest UI
+    // initalize UI
     public static ArrayList<User> initializeUI(ArrayList<User> data) {
         data.forEach((d) -> {
-            // initialize UI data
+            // manifest UI data
             if (d.getClass().getSimpleName().equals("Admin")) {
                 // synchronize admin information here
                 ((Admin)d).setStudentCount(data);

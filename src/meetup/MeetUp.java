@@ -20,67 +20,72 @@ public class MeetUp {
         
         // User data literals
         // template array for UI, accepts Admin and Students
-        ArrayList<User> data = new ArrayList<>(
+        populateUI(
                 
-            Arrays.asList(
+            initializeUI(
                     
-                // User type Admin
-                Admin.make(1000, "Andy"),
-                
-                // User type Student
-                Student.make(
-                    1001, "Bob", false, false, 
+                new ArrayList<>(
+
                     Arrays.asList(
-                        Friend.make(1002, false),
-                        Friend.make(1003, false),
-                        Friend.make(1004, false)
-                    ),
-                    Arrays.asList(
-                        Schedule.make(1, "CSCI-1100", "2/2/18 10:00 AM", "Gilbreath Hall"),
-                        Schedule.make(2, "CSCI-1200", "2/3/18 11:15 AM", "Nicks Hall")
-                    )
-                ),
-                
-                // User type Student
-                Student.make(
-                    1002, "Carl", true, false,
-                    Arrays.asList(
-                        Friend.make(1001, false),
-                        Friend.make(1003, true)
-                    ),
-                    Arrays.asList(
-                        Schedule.make(1, "CSCI-1100", "2/2/18 10:00 AM", "Gilbreath Hall"),
-                        Schedule.make(2, "CSCI-1300", "2/3/18 12:00 PM", "Nicks Hall")
-                    )
-                ),
-                
-                // User type Student
-                Student.make(
-                    1003, "Dan", true, true,
-                    Arrays.asList(
-                        Friend.make(1001, false)
-                    ),
-                    Arrays.asList(
-                        Schedule.make(1, "ENG-4400", "2/3/18", "Sherrod Library")
-                    )
-                ),
-                
-                // User type Student
-                Student.make(
-                    1004, "Eric", true, true,
-                    Arrays.asList(
-                        Friend.make(1002, false),
-                        Friend.make(1003, false)
-                    ),
-                    Arrays.asList(
-                        Schedule.make(1, "ENG-4400", "2/3/18", "Sherrod Library")
+
+                        // User type Admin
+                        Admin.make(1000, "Andy"),
+
+                        // User type Student
+                        Student.make(
+                            1001, "Bob", false, false, 
+                            Arrays.asList(
+                                Friend.make(1002, false),
+                                Friend.make(1003, false),
+                                Friend.make(1004, false)
+                            ),
+                            Arrays.asList(
+                                Schedule.make(1, "CSCI-1100", "2/2/18 10:00 AM", "Gilbreath Hall"),
+                                Schedule.make(2, "CSCI-1200", "2/3/18 11:15 AM", "Nicks Hall")
+                            )
+                        ),
+
+                        // User type Student
+                        Student.make(
+                            1002, "Carl", true, false,
+                            Arrays.asList(
+                                Friend.make(1001, false),
+                                Friend.make(1003, true)
+                            ),
+                            Arrays.asList(
+                                Schedule.make(1, "CSCI-1100", "2/2/18 10:00 AM", "Gilbreath Hall"),
+                                Schedule.make(2, "CSCI-1300", "2/3/18 12:00 PM", "Nicks Hall")
+                            )
+                        ),
+
+                        // User type Student
+                        Student.make(
+                            1003, "Dan", true, true,
+                            Arrays.asList(
+                                Friend.make(1001, false)
+                            ),
+                            Arrays.asList(
+                                Schedule.make(1, "ENG-4400", "2/3/18", "Sherrod Library")
+                            )
+                        ),
+
+                        // User type Student
+                        Student.make(
+                            1004, "Eric", true, true,
+                            Arrays.asList(
+                                Friend.make(1002, false),
+                                Friend.make(1003, false)
+                            ),
+                            Arrays.asList(
+                                Schedule.make(1, "ENG-4400", "2/3/18", "Sherrod Library")
+                            )
+                        )
                     )
                 )
+
+            // initalize and populate UI
             )
         );
-        
-        // initalize and populate UI
-        populateUI(initializeUI(data));
         
     }
     

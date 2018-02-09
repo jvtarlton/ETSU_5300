@@ -2,16 +2,18 @@
 package meetup;
 
 /**
- *
+ * This class is a Student aggregate class
  * @author Jim
  */
 public class Suggestion {
     
-    int id;
-    int friend_id;
-    int friend_schedule_id;
-    boolean accept;
+    // protected members
+    protected int id;
+    protected int friend_id;
+    protected int friend_schedule_id;
+    protected boolean accept;
     
+    // constructor
     public Suggestion(int i, int fi, int fsi, boolean a) {
         this.id = i;
         this.friend_id = fi;
@@ -19,8 +21,14 @@ public class Suggestion {
         this.accept = a;
     }
     
+    // factory method
+    static Suggestion make(int i, int fi, int fsi, boolean a) {
+        return new Suggestion(i, fi, fsi, a); 
+    }
+    
+    // functionality for accepting/denying schedule suggestion
     public void toggleSuggestion() {
-        this.accept = !this.accept;
+        this.accept = ((this.accept == true) ? false : true);
     }
     
     public void printSuggestion() {

@@ -7,7 +7,7 @@ import java.util.List;
  * This class represents the User abstract base class for system users.
  * @author Jim
  */
-public abstract class User {
+public abstract class User implements UserInterface {
     
     // private members
     int id;

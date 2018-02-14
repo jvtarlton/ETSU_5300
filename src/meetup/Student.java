@@ -8,61 +8,59 @@ import java.util.*;
  */
 public class Student extends User {
     
-    // protected members
-    protected boolean flagged;
-    protected boolean ban;
-    protected List<Friend> friends;
-    protected List<Schedule> schedule;
-    protected List<Suggestion> suggestions;
+    // private members
+    private boolean flagged;
+    private boolean banned;
+    private List<Friend> friends;
+    private List<Schedule> schedule;
+    private List<Suggestion> suggestions;
     
     // constructor
-    public Student(
-            int i, String n, 
-            boolean f, boolean b, 
-            List<Friend> fs, 
-            List<Schedule> sh
+    protected Student(
+            int id,
+            String name, 
+            boolean flagged,
+            boolean banned, 
+            List<Friend> friends, 
+            List<Schedule> schedule
     ) {
-        super(i, n);
-        this.ban = b;
-        this.friends = fs;
-        this.schedule = sh;
+        super(id, name);
+        this.flagged = flagged;
+        this.banned = banned;
+        this.friends = friends;
+        this.schedule = schedule;
     }
     
-    public List<Schedule> getSchedule() {
-        return schedule;
+    protected List<Schedule> getSchedule() {
+        return this.schedule;
     }
     
-    public List<Suggestion> getSuggestions() {
-        return suggestions;
+    protected List<Suggestion> getSuggestions() {
+        return this.suggestions;
     }
 
-    public void addSchedule(Schedule s) {
-        schedule.add(s);
+    protected void addSchedule(Schedule s) {
+        this.schedule.add(s);
     }
 
-    public void findScheduleMatches() {
+    protected void findScheduleMatches() {
         // loop trough anonymous students collection
         // find common schedules
         // append to suggestions collection
     }
-
-    @Override
-    public String toString() {
+    
+    @Override public String toString() {
         String output =  
             "\n------------------" +
             "\nAccount Type: Student" +
-            "\nID: " + super.id + 
-            "\nName: " + super.name + 
+            "\nID: " + super.getID() + 
+            "\nName: " + super.getName() + 
             "\nFriend count: " + this.friends.size() +
             "\nSchedule is as follows: \n";
-            for(int i = 0; i < this.schedule.size(); i++) {
-                output += "\t" +
-                    this.schedule.get(i).name + " on " +
-                    this.schedule.get(i).time + " at " +
-                    this.schedule.get(i).location + "\n"; 
+            for (Schedule s : this.schedule) {
+                output += s.toString();
             }
         return output;
     }
-    
     
 }

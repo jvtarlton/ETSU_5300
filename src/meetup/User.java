@@ -10,31 +10,35 @@ import java.util.List;
 public abstract class User implements UserInterface {
     
     // private members
-    int id;
-    String name;
-    String un;
-    String pw;
+    private final int id;
+    private String name;
+    private String un;
+    private String pw;
     
     // base constructor
-    public User(int i, String n) {
-        this.id = i;
-        this.name = n;
+    protected User(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
     
     // factory method for admin user
-    static User make(int i, String n) {
-        return new Admin(i, n); 
+    protected static User make(int id, String name) {
+        return new Admin(id, name); 
     }
     
     // factory method for student user
-    static User make(
-            int i, 
-            String n, 
-            boolean f, 
-            boolean b,
-            List<Friend> fs, 
-            List<Schedule> sh
+    protected static User make(
+            int id, 
+            String name, 
+            boolean flagged, 
+            boolean banned,
+            List<Friend> friends, 
+            List<Schedule> schedule
     ) {
-        return new Student(i, n, f, b, fs, sh); 
+        return new Student(id, name, flagged, banned, friends, schedule); 
     }
+    
+    @Override public String getName() { return this.name; }
+    @Override public int getID() { return this.id; }
+    
 }

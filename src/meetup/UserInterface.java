@@ -11,4 +11,15 @@ package meetup;
  */
 public interface UserInterface {
     
+    public default int getID() { msg(0); return 0; }
+    public default String getName() { msg(1); return ""; };
+    
+    public default void msg(int e) {
+        String error_type[] = {
+            " id ",
+            " name "
+        };
+        System.out.println("No" + error_type[e] + "found!");
+    }
+    
 }

@@ -8,20 +8,21 @@ import java.util.*;
  */
 public class Admin extends User {
     
-    int student_count;
-    int message_count;
-    int suggestion_count;
-    int connection_count;
+    private int student_count;
+    private int message_count;
+    private int suggestion_count;
+    private int connection_count;
     
     // constructor
-    public Admin(int i, String n) {
-        super(i, n);
+    protected Admin(int id, String name) {
+        super(id, name);
     }
-        
+    
     /**
      * additional administrator functionality 
+     * @param data
      */
-    public void setStudentCount(ArrayList<User> data) { 
+    protected void setStudentCount(ArrayList<User> data) { 
         int count = 0;
         for(int j = 0; j < data.size(); j++) {
             String user_type = data.get(j).getClass().getSimpleName();
@@ -29,22 +30,22 @@ public class Admin extends User {
         }
         this.student_count = count;
     }
-    public int getStudentCount() { return student_count; };
-    public int getSuggestionCount() { return suggestion_count; };
-    public int getConnectionCount() { return connection_count; };
-    public int getConDelCount() { return 0; };
-    public int getConDefCount() { return 0; };
-    public int getMsgCount() { return message_count; };
-    public Friend getBlockedStuents() { Friend f = new Friend(9999, false); return f; };
-    public int banStudent() { return 0; };
     
-    @Override
-    public String toString() {
+    protected int getStudentCount() { return this.student_count; };
+    protected int getSuggestionCount() { return this.suggestion_count; };
+    protected int getConnectionCount() { return this.connection_count; };
+    protected int getConDelCount() { return 0; };
+    protected int getConDefCount() { return 0; };
+    protected int getMsgCount() { return this.message_count; };
+    protected Friend getBlockedStuents() { return new Friend(9999, false); };
+    protected int banStudent() { return 0; };
+    
+    @Override public String toString() {
         return
             "\n------------------" +
             "\nAccount Type: Admin" +
-            "\nID: " + super.id + 
-            "\nName: " + super.name + 
+            "\nID: " + super.getID() + 
+            "\nName: " + super.getName() + 
             "\nStudent count: " + this.getStudentCount() +
             "\n";
     }

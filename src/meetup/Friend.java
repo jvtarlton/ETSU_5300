@@ -8,26 +8,23 @@ package meetup;
 public class Friend {
     
     // private members
-    protected int id;
-    protected boolean blocked;
+    private int id;
+    private boolean blocked;
     
     // constructor
-    public Friend(int i, boolean b) {
-        this.id = i;
-        this.blocked = b;
+    protected Friend(int id, boolean blocked) {
+        this.id = id;
+        this.blocked = blocked;
     }
     
     // factory method
-    static Friend make(int i, boolean b) {
-        return new Friend(i, b); 
+    protected static Friend make(int id, boolean blocked) {
+        return new Friend(id, blocked); 
     }
     
     // functionality to let student block/unblock a friend from friends list
-    public void toggleBlock() {
-        this.blocked = ((this.blocked == true) ? false : true);
+    protected void toggleBlock() {
+        this.blocked = ((this.blocked != true));
     }
-    
-    
-    
     
 }

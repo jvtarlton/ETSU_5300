@@ -8,29 +8,40 @@ package meetup;
 public class Schedule {
     
     // protected members
-    protected int id;
-    protected String name;
-    protected String time;
-    protected String location;
+    private int id;
+    private String name;
+    private String time;
+    private String location;
 
     // constructor
-    public Schedule(int i, String n, String t, String l) {
-        this.id = i;
-        this.name = n;
-        this.time = t;
-        this.location = l;
+    protected Schedule(int id, String name, String time, String location) {
+        this.id = id;
+        this.name = name;
+        this.time = time;
+        this.location = location;
     }
     
     // factory method
-    static Schedule make(int i, String n, String t, String l) {
-        return new Schedule(i, n, t, l); 
+    protected static Schedule make(
+            int id, 
+            String name, 
+            String time, 
+            String location
+    ) {
+        return new Schedule(id, name, time, location); 
     }
+    
+    protected int getID() { return this.id; }
+    protected String getName() { return this.name; }
+    protected String getTime() { return this.time; }
+    protected String getLocation() { return this.location; }
     
     // toString to print schedule item
-    @Override
-    public String toString() {
-        return "\n\t" + name + " on " + time + " at " + location + "\n";
+    @Override public String toString() {
+        return "\t" + 
+            this.name + " on " + 
+            this.time + " at " + 
+            this.location + "\n";
     }
-    
     
 }

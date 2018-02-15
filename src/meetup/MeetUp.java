@@ -89,7 +89,6 @@ public class MeetUp {
         
     }
     
-    
     // initalize UI
     public static ArrayList<User> initializeUI(ArrayList<User> data) {
         data.forEach((d) -> {
@@ -105,7 +104,6 @@ public class MeetUp {
         return data;
     }
     
-    
     // populate UI
     public static void populateUI(ArrayList<User> data) {
         // print UI
@@ -113,7 +111,6 @@ public class MeetUp {
             System.out.println(d.toString());
         });
     }
-    
     
 }
 

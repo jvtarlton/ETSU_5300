@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package meetup;
 
 /**
@@ -16,10 +12,12 @@ public interface UserInterface {
     
     public default void msg(int e) {
         String error_type[] = {
-            " id ",
-            " name "
+            "ID ",
+            "Name "
         };
-        System.out.println("No" + error_type[e] + "found!");
+        System.out.println(
+            error_type[e] + "not found!"
+        );
     }
     
 }

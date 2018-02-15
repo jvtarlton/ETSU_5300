@@ -1,5 +1,5 @@
 /*
- * This package illustrates the ETSU-5300 MeetUp exercise 1 assignment UML
+ * This package illustrates the ETSU-5300 MeetUp exercise 2 assignment UML
  * included with these java class files: 
      MeetUp Class Diagram.pdf
      MeetUp Sequence Diagram 1.pdf

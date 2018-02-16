@@ -6,26 +6,35 @@
 package persistence_layer;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+// for demo
 import presentation_layer.Friend;
 import presentation_layer.Schedule;
 import presentation_layer.User;
 
 /**
- * User data literals
- * Template array for UI, accepts Admin and Students
+ * If actual, live REST endpoint was established, getData() would
+ * return a JSON blob as a string; thus, no presentation_layer imports
+ * would be needed. The User objects would then be instantiated in the
+ * Connection.parseData() method. I've simplified the demo by instantiating
+ * User objects here for now.
  * @author Jim
  */
 public class DBO {
     
     private String buffer;
     
-    // represents instance of data object
-    public DBO() { }
+
+    // represents data object
+    public DBO() {}
     
     public ArrayList<User> getData() {
+        
         return  new ArrayList<>(
-                Arrays.asList(
                 
+            Arrays.asList(
+                
+                // User type Admin
                 User.make(1000, "Andy"),
                 
                 // User type Student

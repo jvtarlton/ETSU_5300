@@ -8,19 +8,19 @@ import java.util.ArrayList;
 import presentation_layer.User;
 
 /**
- * 
+ * If 
  * @author Jim
  */
-public class Connection {
+public final class Connection {
     
-    private ArrayList<User> all_users;
+    private final ArrayList<User> all_users;
     private User current_user;
     
     // represents instance of data object
     public Connection() {
         // request user data
         DBO data = new DBO();
-        this.all_users = data.getData();
+        this.all_users = parseDataa(data.getData());
     }
     
     public boolean authenticate(String[] s) {
@@ -42,6 +42,14 @@ public class Connection {
         return this.current_user;
     }
     
+    
+    // intended to accept JSON blob used to instantiate User objects 
+    public ArrayList<User> parseDataa(ArrayList<User> data) {
+        // initialize new User array
+        // loop blob
+        // add blob[i] to User array
+        return data;
+    }
     
     // returns session user data
     public ArrayList<User> getAllUsers() {

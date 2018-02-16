@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class MeetUp {
 
     // prompt user for credentials
-    private static String session[] = { "Carl1002", "password" };   // user login
+    private static final String SESSION[] = { "Carl1002", "password" };   // user login
     private static User user;                                                           // user session instance
     private static ArrayList<User> users;                                      // community data
     
@@ -28,7 +28,7 @@ public class MeetUp {
     // user interface class
     public static void main(String[] args) {
 
-        if(login(session)) {
+        if(login(SESSION)) {
             user = request.getCurrentUser();
             users = request.getAllUsers();
             initializeUI(users);
@@ -60,6 +60,21 @@ public class MeetUp {
     
     
     
+    protected static ArrayList<Suggestion> findScheduleMatches() {
+        ArrayList<Suggestion> new_suggestions = new ArrayList<>();
+        // loop trough anonymous students collection
+        for (User u : users) {
+            if(u.getID() != user.getID() && u.getClass().getSimpleName().equals("Student")) {
+                
+                for (Schedule s : ((Student)u).getSchedule()) {
+                    
+                }
+            }
+        }
+        // find common schedules
+        // append to suggestions collection
+        return new ArrayList<>();
+    }
     
     // initalize UI
     public static ArrayList<User> initializeUI(ArrayList<User> data) {
@@ -70,7 +85,7 @@ public class MeetUp {
                 ((Admin)d).setStudentCount(data);
             } else {
                 // synchronize student messages, schedules, etc. here
-                ((Student)d).findScheduleMatches();
+                ((Student)d).setSuggestions(findScheduleMatches());
             }
         });
         return data;

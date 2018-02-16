@@ -38,17 +38,15 @@ public class Student extends User {
     protected List<Suggestion> getSuggestions() {
         return this.suggestions;
     }
+    
+    protected void setSuggestions(ArrayList<Suggestion> suggestions) {
+        this.suggestions = suggestions;
+    }
 
     protected void addSchedule(Schedule s) {
         ArrayList<Schedule> tmp = new ArrayList<>(schedule);
         tmp.add(s);
         schedule = tmp;
-    }
-    
-    protected void findScheduleMatches() {
-        // loop trough anonymous students collection
-        // find common schedules
-        // append to suggestions collection
     }
     
     @Override public String toString() {

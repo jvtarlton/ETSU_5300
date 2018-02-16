@@ -8,8 +8,6 @@
 package meetup;
 import persistence_layer.*;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.*;
 /**
  * This class is a test case for instantiating the abstract User through
  * either Admin or Student class and aggregating their corresponding 
@@ -18,16 +16,17 @@ import java.util.*;
  * @author Jim Tarlton
  */
 public class MeetUp {
+
+    // prompt user for credentials
+    private static String session[] = { "Carl1002", "password" };   // user login
+    private static User user;                                                           // user session instance
+    private static ArrayList<User> users;                                      // community data
     
     // make connection with persistence layer
     public static Connection con = new Connection();
     
+    // user interface class
     public static void main(String[] args) {
-            
-        // prompt user for credentials
-          String session[] = { "Carl1002", "password" };
-          User user;
-          ArrayList<User> users;
 
         if(login(session)) {
             user = con.getCurrentUser();
@@ -35,24 +34,32 @@ public class MeetUp {
             initializeUI(users);
             System.out.println(user.toString());
             System.out.println(".....adding new schedule item.....");
-            Schedule s = new Schedule(3, "ENG-4400", "2/3/18", "Sherrod Library");
-            
-            // error here ??
-            ((Student)user).addSchedule(s);
-            
+            makeSchedule("ENG-4400", "2/3/18", "Sherrod Library");      // student adds new schedule item
             System.out.println(user.toString());
-            
         } else {
             System.out.println("Log in failed!");
         }
         
     }
     
+    // User functionality
     public static boolean login(String[] sesh) {
         // encrypt password
         // password = encrypt(password);
         return ((con.authenticate(sesh)));
     }
+    
+     // Student functionality
+    // make new schedule item
+    public static void makeSchedule(String name, String time, String location) {
+        int id = ((Student)user).getSchedule().size() + 1;
+        Schedule s = Schedule.make(id, name, time, location);
+        ((Student)user).addSchedule(s);
+    }
+    
+    
+    
+    
     
     // initalize UI
     public static ArrayList<User> initializeUI(ArrayList<User> data) {
@@ -69,13 +76,20 @@ public class MeetUp {
         return data;
     }
     
-    // populate UI
+    
+    
+    
+    
+    // print all users
     public static void populateUI(ArrayList<User> data) {
         // print UI
         data.forEach((d) -> {
             System.out.println(d.toString());
         });
     }
+    
+    
+    
     
 }
 

@@ -39,8 +39,10 @@ public class Student extends User {
         return this.suggestions;
     }
 
-    public void addSchedule(Schedule s) {
-        this.schedule.add(s);
+    protected void addSchedule(Schedule s) {
+        ArrayList<Schedule> tmp = new ArrayList<>(schedule);
+        tmp.add(s);
+        schedule = tmp;
     }
     
     protected void findScheduleMatches() {

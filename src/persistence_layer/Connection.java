@@ -46,6 +46,7 @@ public class Connection {
                 User.make(1000, "Andy"),
 
                 // User type Student
+                    
                 User.make(
                     1001, "Bob", false, false, 
                     Arrays.asList(

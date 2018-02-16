@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package persistence_layer;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import presentation_layer.Friend;
@@ -16,22 +15,18 @@ import presentation_layer.User;
  * Template array for UI, accepts Admin and Students
  * @author Jim
  */
-public class Users {
-    
-    private ArrayList<User> users;
+public class DBO {
     
     // represents instance of data object
-    public Users() {
-        
-        // parse into User objects
-        this.users = new ArrayList<>(
-
-            Arrays.asList(
-
+    public DBO() { }
+    
+    public ArrayList<User> getUsers() {
+        return  new ArrayList<>(
+                Arrays.asList(
+                
                 User.make(1000, "Andy"),
-
+                
                 // User type Student
-                    
                 User.make(
                     1001, "Bob", false, false, 
                     Arrays.asList(
@@ -80,13 +75,11 @@ public class Users {
                         Schedule.make(1, "ENG-4400", "2/3/18", "Sherrod Library")
                     )
                 )
+                 
             )
+            
         );
-        
-    }
-    
-    public ArrayList<User> getUsers() {
-        return this.users;
+         
     }
 
 }

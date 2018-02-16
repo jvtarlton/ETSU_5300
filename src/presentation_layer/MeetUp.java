@@ -23,14 +23,14 @@ public class MeetUp {
     private static ArrayList<User> users;                                      // community data
     
     // make connection with persistence layer
-    public static Connection con = new Connection();
+    public static Connection request = new Connection();
     
     // user interface class
     public static void main(String[] args) {
 
         if(login(session)) {
-            user = con.getCurrentUser();
-            users = con.getAllUsers();
+            user = request.getCurrentUser();
+            users = request.getAllUsers();
             initializeUI(users);
             System.out.println(user.toString());
             System.out.println(".....adding new schedule item.....");
@@ -46,7 +46,7 @@ public class MeetUp {
     public static boolean login(String[] sesh) {
         // encrypt password
         // password = encrypt(password);
-        return ((con.authenticate(sesh)));
+        return ((request.authenticate(sesh)));
     }
     
      // Student functionality

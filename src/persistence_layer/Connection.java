@@ -13,18 +13,15 @@ import presentation_layer.User;
  */
 public class Connection {
     
-    
     private ArrayList<User> all_users;
     private User current_user;
+    
     // represents instance of data object
     public Connection() {
-        
         // request user data
-        Users con_users = new Users();
-        this.all_users = con_users.getUsers();
-        
+        DBO data = new DBO();
+        this.all_users = data.getUsers();
     }
-    
     
     public boolean authenticate(String[] s) {
         // decrypt password

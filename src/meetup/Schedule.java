@@ -14,7 +14,7 @@ public class Schedule {
     private String location;
 
     // constructor
-    protected Schedule(int id, String name, String time, String location) {
+    public Schedule(int id, String name, String time, String location) {
         this.id = id;
         this.name = name;
         this.time = time;
@@ -22,7 +22,7 @@ public class Schedule {
     }
     
     // factory method
-    protected static Schedule make(
+    public static Schedule make(
             int id, 
             String name, 
             String time, 
@@ -39,6 +39,7 @@ public class Schedule {
     // toString to print schedule item
     @Override public String toString() {
         return "\t" + 
+            this.id + " -- " + 
             this.name + " on " + 
             this.time + " at " + 
             this.location + "\n";

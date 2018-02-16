@@ -6,6 +6,9 @@
      MeetUp Sequence Diagram 2.pdf
  */
 package meetup;
+import persistence_layer.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.*;
 /**
  * This class is a test case for instantiating the abstract User through
@@ -16,77 +19,39 @@ import java.util.*;
  */
 public class MeetUp {
     
+    // make connection with persistence layer
+    public static Connection con = new Connection();
+    
     public static void main(String[] args) {
+            
+        // prompt user for credentials
+          String session[] = { "Carl1002", "password" };
+          User user;
+          ArrayList<User> users;
+
+        if(login(session)) {
+            user = con.getCurrentUser();
+            users = con.getData();
+            initializeUI(users);
+            System.out.println(user.toString());
+            System.out.println(".....adding new schedule item.....");
+            Schedule s = new Schedule(3, "ENG-4400", "2/3/18", "Sherrod Library");
+            
+            // error here ??
+            ((Student)user).addSchedule(s);
+            
+            System.out.println(user.toString());
+            
+        } else {
+            System.out.println("Log in failed!");
+        }
         
-        // User data literals
-        // template array for UI, accepts Admin and Students
-        populateUI(
-                
-            initializeUI(
-                    
-                new ArrayList<>(
-
-                    Arrays.asList(
-
-                        // User type Admin
-                        User.make(1000, "Andy"),
-
-                        // User type Student
-                        User.make(
-                            1001, "Bob", false, false, 
-                            Arrays.asList(
-                                Friend.make(1002, false),
-                                Friend.make(1003, false),
-                                Friend.make(1004, false)
-                            ),
-                            Arrays.asList(
-                                Schedule.make(1, "CSCI-1100", "2/2/18 10:00 AM", "Gilbreath Hall"),
-                                Schedule.make(2, "CSCI-1200", "2/3/18 11:15 AM", "Nicks Hall")
-                            )
-                        ),
-
-                        // User type Student
-                        User.make(
-                            1002, "Carl", true, false,
-                            Arrays.asList(
-                                Friend.make(1001, false),
-                                Friend.make(1003, true)
-                            ),
-                            Arrays.asList(
-                                Schedule.make(1, "CSCI-1100", "2/2/18 10:00 AM", "Gilbreath Hall"),
-                                Schedule.make(2, "CSCI-1300", "2/3/18 12:00 PM", "Nicks Hall")
-                            )
-                        ),
-
-                        // User type Student
-                        User.make(
-                            1003, "Dan", true, true,
-                            Arrays.asList(
-                                Friend.make(1001, false)
-                            ),
-                            Arrays.asList(
-                                Schedule.make(1, "ENG-4400", "2/3/18", "Sherrod Library")
-                            )
-                        ),
-
-                        // User type Student
-                        User.make(
-                            1004, "Eric", true, true,
-                            Arrays.asList(
-                                Friend.make(1002, false),
-                                Friend.make(1003, false)
-                            ),
-                            Arrays.asList(
-                                Schedule.make(1, "ENG-4400", "2/3/18", "Sherrod Library")
-                            )
-                        )
-                    )
-                )
-
-            // initalize and populate UI
-            )
-        );
-        
+    }
+    
+    public static boolean login(String[] sesh) {
+        // encrypt password
+        // password = encrypt(password);
+        return ((con.authenticate(sesh)));
     }
     
     // initalize UI

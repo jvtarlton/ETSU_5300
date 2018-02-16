@@ -13,6 +13,9 @@ public class Suggestion {
     protected int friend_schedule_id;
     protected boolean accepted;
     
+    // no-arg constructor
+    public Suggestion() {}
+    
     // constructor
     public Suggestion(
             int id, 

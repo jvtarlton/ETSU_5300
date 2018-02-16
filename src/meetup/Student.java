@@ -39,10 +39,10 @@ public class Student extends User {
         return this.suggestions;
     }
 
-    protected void addSchedule(Schedule s) {
+    public void addSchedule(Schedule s) {
         this.schedule.add(s);
     }
-
+    
     protected void findScheduleMatches() {
         // loop trough anonymous students collection
         // find common schedules

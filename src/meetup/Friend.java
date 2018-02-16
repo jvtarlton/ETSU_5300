@@ -18,7 +18,7 @@ public class Friend {
     }
     
     // factory method
-    protected static Friend make(int id, boolean blocked) {
+    public static Friend make(int id, boolean blocked) {
         return new Friend(id, blocked); 
     }
     

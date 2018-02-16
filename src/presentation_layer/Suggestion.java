@@ -44,8 +44,28 @@ public class Suggestion {
         this.accepted = ((this.accepted != true));
     }
     
-    public void printSuggestion() {
-        // loop trough anonymous students collection
-        // print common schedules
+    public int getID(){
+        return this.id;
+    }
+    
+    public int getFriendID(){
+        return this.friend_id;
+    }
+    
+    public int getFriendScheduleID(){
+        return this.friend_schedule_id;
+    }
+    
+    public boolean getAccepted(){
+        return this.accepted;
+    }
+    
+    // toString to print suggestion item
+    @Override public String toString() {
+        return "\t" + 
+            this.id + " -- " + "student with ID " + 
+            this.friend_id + " has a similarly scheduled item of ID " + 
+            this.friend_schedule_id + ".  You have " + ((this.accepted) ? "" : "not ") +
+             "accepted this suggtestion.\n";
     }
 }

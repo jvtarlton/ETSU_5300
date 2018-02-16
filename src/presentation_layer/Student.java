@@ -56,10 +56,10 @@ public class Student extends User {
             "\nID: " + super.getID() + 
             "\nName: " + super.getName() + 
             "\nFriend count: " + this.friends.size() +
-            "\nSchedule is as follows: \n";
+            "\nSchedule is as follows: ";
             for (Schedule s : this.schedule) {
-                output += s.toString();
-            }
+                output += "\n" + s.toString();
+            };
         return output;
     }
     

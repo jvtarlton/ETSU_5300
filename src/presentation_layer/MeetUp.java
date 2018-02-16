@@ -19,27 +19,29 @@ public class MeetUp {
 
     // prompt user for credentials
     private static final String SESSION[] = { "Carl1002", "password" };   // user login
-    private static User user;                                                           // user session instance
-    private static ArrayList<User> users;                                      // community data
+    private static User active_user;                                                           // user session instance
+    private static ArrayList<User> all_users;                                           // app data
     
     // make connection with persistence layer
     public static Connection request = new Connection();
     
     // user interface class
     public static void main(String[] args) {
-
         if(login(SESSION)) {
-            user = request.getCurrentUser();
-            users = request.getAllUsers();
-            initializeUI(users);
-            System.out.println(user.toString());
+            active_user = request.getCurrentUser();
+            all_users = request.getAllUsers();
+            initializeUI(all_users);
+            System.out.println(active_user.toString());
+            printSuggestions();
             System.out.println(".....adding new schedule item.....");
-            makeSchedule("ENG-4400", "2/3/18", "Sherrod Library");      // student adds new schedule item
-            System.out.println(user.toString());
+            buildSchedule("ART-4400", "SPRING 2018 F 05:00 PM", "Student Center");                    // student adds schedule item
+            System.out.println(".....accepting a meet up suggestion.....");
+            ((Student)active_user).getSuggestions().get(0).toggleSuggestion();  // student accepts suggestion
+            System.out.println(active_user.toString());
+            printSuggestions();
         } else {
             System.out.println("Log in failed!");
         }
-        
     }
     
     // User functionality
@@ -50,31 +52,89 @@ public class MeetUp {
     }
     
      // Student functionality
-    // make new schedule item
-    public static void makeSchedule(String name, String time, String location) {
-        int id = ((Student)user).getSchedule().size() + 1;
+    // create new schedule item
+    public static void buildSchedule(String name, String time, String location) {
+        int id = ((Student)active_user).getSchedule().size() + 1;
         Schedule s = Schedule.make(id, name, time, location);
-        ((Student)user).addSchedule(s);
+        ((Student)active_user).addSchedule(s);
     }
     
-    
-    
-    
-    protected static ArrayList<Suggestion> findScheduleMatches() {
+     // Student functionality
+    // generate suggestions
+    protected static ArrayList<Suggestion> buildSuggestions() {
+        ArrayList<Schedule> current_user_schedule = new ArrayList<>(((Student)active_user).getSchedule());
         ArrayList<Suggestion> new_suggestions = new ArrayList<>();
-        // loop trough anonymous students collection
-        for (User u : users) {
-            if(u.getID() != user.getID() && u.getClass().getSimpleName().equals("Student")) {
-                
-                for (Schedule s : ((Student)u).getSchedule()) {
-                    
+        int suggestion_id = 0;
+        // loop trough students collection
+        for (User us : all_users) {
+            if(us.getID() != active_user.getID() && us.getClass().getSimpleName().equals("Student")) {
+                for (Schedule s : ((Student)us).getSchedule()) {
+                    for(int i = 0; i < current_user_schedule.size(); i++) {
+                        // find common schedules
+                        if(s.getLocation().equals(current_user_schedule.get(i).getLocation())) {
+                            suggestion_id++;
+                            new_suggestions.add(
+                                    new Suggestion(
+                                        suggestion_id,
+                                        us.getID(),
+                                        s.getID(),
+                                        false
+                                )
+                            );
+                        }
+                    }
                 }
             }
         }
-        // find common schedules
         // append to suggestions collection
+        ((Student)active_user).setSuggestions(new_suggestions);
         return new ArrayList<>();
     }
+    
+    
+     // Student functionality
+    // render and output suggestions
+    protected static void printSuggestions() {
+        System.out.println("Suggestions are as follows: ");
+        for (Suggestion item : ((Student)active_user).getSuggestions()) {
+            System.out.println(
+                    "\t" + item.getID() + " -- " +
+                    getStudentName(item.getFriendID()) + " has similarly scheduled item at " + 
+                    getScheduleLocation(item.getFriendID(),item.getFriendScheduleID()) +
+                    ". You have " + (item.getAccepted() ? "" :  "NOT ") + "accepted the suggestion."
+            );
+        }
+    }
+    
+    
+     // Student queries
+    // gets location of friend's scheduled item
+    public static String getScheduleLocation(int user_id, int location_id) {
+        String location = "N/A";
+        for(User user : all_users) {
+            if(user.getID() == user_id) {
+                for (Schedule item : ((Student)user).getSchedule()) {
+                    if(item.getID() == location_id) {
+                        location = item.getLocation();
+                    }
+                }
+            }
+        }
+        return location;
+    }
+    
+    // Student queries
+    // gets name of friend
+    public static String getStudentName(int id) {
+        String name = "N/A";
+        for (User user : all_users) {
+            if(user.getID() == id) {
+                name = user.getName();
+            }
+        }
+        return name;
+    }
+    
     
     // initalize UI
     public static ArrayList<User> initializeUI(ArrayList<User> data) {
@@ -85,19 +145,15 @@ public class MeetUp {
                 ((Admin)d).setStudentCount(data);
             } else {
                 // synchronize student messages, schedules, etc. here
-                ((Student)d).setSuggestions(findScheduleMatches());
+                ((Student)d).setSuggestions(buildSuggestions());
             }
         });
         return data;
     }
     
     
-    
-    
-    
     // print all users
     public static void populateUI(ArrayList<User> data) {
-        // print UI
         data.forEach((d) -> {
             System.out.println(d.toString());
         });

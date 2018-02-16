@@ -42,7 +42,7 @@ public class Schedule {
             this.id + " -- " + 
             this.name + " on " + 
             this.time + " at " + 
-            this.location + "\n";
+            this.location;
     }
     
 }

@@ -5,7 +5,7 @@
      MeetUp Sequence Diagram 1.pdf
      MeetUp Sequence Diagram 2.pdf
  */
-package meetup;
+package presentation_layer;
 import persistence_layer.*;
 import java.util.ArrayList;
 /**

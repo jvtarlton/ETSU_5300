@@ -7,9 +7,9 @@ package persistence_layer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import meetup.Friend;
-import meetup.Schedule;
-import meetup.User;
+import presentation_layer.Friend;
+import presentation_layer.Schedule;
+import presentation_layer.User;
 
 /**
  * User data literals

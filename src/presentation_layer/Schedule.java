@@ -1,5 +1,5 @@
 
-package meetup;
+package presentation_layer;
 
 /**
  * This class is a Student aggregate class

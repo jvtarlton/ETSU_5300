@@ -20,7 +20,7 @@ public class Connection {
     public Connection() {
         // request user data
         DBO data = new DBO();
-        this.all_users = data.getUsers();
+        this.all_users = data.getData();
     }
     
     public boolean authenticate(String[] s) {

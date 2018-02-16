@@ -17,10 +17,12 @@ import presentation_layer.User;
  */
 public class DBO {
     
+    private String buffer;
+    
     // represents instance of data object
     public DBO() { }
     
-    public ArrayList<User> getUsers() {
+    public ArrayList<User> getData() {
         return  new ArrayList<>(
                 Arrays.asList(
                 

@@ -30,7 +30,7 @@ public class MeetUp {
 
         if(login(session)) {
             user = con.getCurrentUser();
-            users = con.getData();
+            users = con.getAllUsers();
             initializeUI(users);
             System.out.println(user.toString());
             System.out.println(".....adding new schedule item.....");

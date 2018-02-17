@@ -46,7 +46,7 @@ public class DBO {
                     ),
                     Arrays.asList(
                         Schedule.make(1, "CSCI-1100", "SPRING 2018 MWF 10:00 AM", "Gilbreath Hall"),
-                        Schedule.make(3, "CSCI-1300", "SPRING 2018 TTh 12:00 PM", "Nicks Hall")
+                        Schedule.make(2, "CSCI-1300", "SPRING 2018 TTh 12:00 PM", "Nicks Hall")
                     )
                 ),
 
@@ -58,10 +58,10 @@ public class DBO {
                         Friend.make(1003, true)
                     ),
                     Arrays.asList(
-                        Schedule.make(1, "CSCI-1100", "SPRING 10:00 AM", "Gilbreath Hall"),
+                        Schedule.make(1, "CSCI-1100", "SPRING 10:00 AM", "Gilbreath"),
                         Schedule.make(2, "CSCI-1200", "SPRING 2018 TTh  11:15 AM", "Nicks Hall"),
                         Schedule.make(3, "CSCI-1300", "SPRING 2018 TTh 12:00 PM", "Nicks Hall"),
-                        Schedule.make(4, "ENG-5400", "SPRING 2018 F 07:00 PM", "Sherrod Library")
+                        Schedule.make(4, "ENG-5400", "SPRING 2018 F 07:00 PM", "Sherrod")
                     )
                 ),
 
@@ -72,7 +72,8 @@ public class DBO {
                         Friend.make(1001, false)
                     ),
                     Arrays.asList(
-                        Schedule.make(1, "ENG-5400", "SPRING 2018 F 07:00 PM", "Sherrod Library")
+                        Schedule.make(1, "ENG-2500", "SPRING 2018 W 03:00 PM", "Gilbreath"),
+                        Schedule.make(2, "ENG-5400", "SPRING 2018 F 07:00 PM", "Sherrod")
                     )
                 ),
 
@@ -84,8 +85,8 @@ public class DBO {
                         Friend.make(1003, false)
                     ),
                     Arrays.asList(
-                        Schedule.make(1, "CSCI-1300", "SPRING 2018 TTh 12:00 PM", "Nicks Hall"),
-                        Schedule.make(2, "ENG-5400", "SPRING 2018 F 07:00 PM", "Sherrod Library")
+                        Schedule.make(1, "ENG-2500", "SPRING 2018 W 03:00 PM", "Gilbreath"),
+                        Schedule.make(2, "CSCI-1300", "SPRING 2018 TTh 12:00 PM", "Lineberger")
                     )
                 )
                  

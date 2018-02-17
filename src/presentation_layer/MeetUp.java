@@ -34,9 +34,12 @@ public class MeetUp {
             System.out.println(active_user.toString());
             printSuggestions();
             System.out.println(".....adding new schedule item.....");
-            buildSchedule("ART-4400", "SPRING 2018 F 05:00 PM", "Student Center");                    // student adds schedule item
+            buildSchedule("ART-4400", "SPRING 2018 F 05:00 PM", "Student Center");  // student adds schedule item
+            System.out.println(".....creating friend request.....");
+            ((Student)active_user).addFriendRequest(1003, false);  // Carl requests friendship of Dan, false until Dan accepts
             System.out.println(".....accepting a meet up suggestion.....");
-            ((Student)active_user).getSuggestions().get(0).toggleSuggestion();  // student accepts suggestion
+            ((Student)active_user).getSuggestions().get(0).toggleSuggestion();  // student accepts suggestion 1
+            ((Student)active_user).getSuggestions().get(2).toggleSuggestion();  // student accepts suggestion 3
             System.out.println(active_user.toString());
             printSuggestions();
         } else {
@@ -48,7 +51,7 @@ public class MeetUp {
     public static boolean login(String[] sesh) {
         // encrypt password
         // password = encrypt(password);
-        return ((request.authenticate(sesh)));
+        return ((request.verify(sesh)));
     }
     
      // Student functionality
@@ -74,11 +77,11 @@ public class MeetUp {
                         if(s.getLocation().equals(current_user_schedule.get(i).getLocation())) {
                             suggestion_id++;
                             new_suggestions.add(
-                                    new Suggestion(
-                                        suggestion_id,
-                                        us.getID(),
-                                        s.getID(),
-                                        false
+                                new Suggestion(
+                                    suggestion_id,
+                                    us.getID(),
+                                    s.getID(),
+                                    false
                                 )
                             );
                         }
@@ -101,7 +104,7 @@ public class MeetUp {
                     "\t" + item.getID() + " -- " +
                     getStudentName(item.getFriendID()) + " has similarly scheduled item at " + 
                     getScheduleLocation(item.getFriendID(),item.getFriendScheduleID()) +
-                    ". You have " + (item.getAccepted() ? "" :  "NOT ") + "accepted the suggestion."
+                    ". \tYou have " + (item.getAccepted() ? "" :  "NOT ") + "accepted the suggestion."
             );
         }
     }

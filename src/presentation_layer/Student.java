@@ -14,6 +14,8 @@ public class Student extends User {
     private List<Friend> friends;
     private List<Schedule> schedule;
     private List<Suggestion> suggestions;
+    private ArrayList<FriendRequest> friend_requests;
+    
     
     // constructor
     protected Student(
@@ -47,6 +49,10 @@ public class Student extends User {
         ArrayList<Schedule> tmp = new ArrayList<>(schedule);
         tmp.add(s);
         schedule = tmp;
+    }
+    
+    protected void addFriendRequest(int id, boolean accepted) {
+        FriendRequest f = new FriendRequest(id, accepted);
     }
     
     @Override public String toString() {

@@ -23,7 +23,7 @@ public final class Connection {
         this.all_users = parseDataa(data.getData());
     }
     
-    public boolean authenticate(String[] s) {
+    public boolean verify(String[] s) {
         // decrypt password
         // password = decrypt(password);
         boolean flag = false;

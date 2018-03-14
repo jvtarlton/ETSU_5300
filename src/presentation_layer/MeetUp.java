@@ -156,11 +156,11 @@ public class MeetUp {
     public static void initializeUI(ArrayList<User> data) {
         data.forEach((d) -> {
             // manifest UI data
-            if (d.getClass().getSimpleName().equals("Admin")) {
+            if (d instanceof Admin) {
                 System.out.println("hello admin");
                 // synchronize admin information here
                 ((Admin)d).setStudentCount(data);
-            } else if (d.getClass().getSimpleName().equals("Student")) {
+            } else if (d instanceof Student) {
                 System.out.println("hello student");
                 // synchronize student messages, schedules, etc. here
                 ((Student)d).setSuggestions(buildSuggestions());

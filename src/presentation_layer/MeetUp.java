@@ -8,6 +8,11 @@
 package presentation_layer;
 import persistence_layer.*;
 import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  * This class is a test case for instantiating the abstract User through
  * either Admin or Student class and aggregating their corresponding 
@@ -18,7 +23,8 @@ import java.util.ArrayList;
 public class MeetUp {
 
     // prompt user for credentials
-    private static final String SESSION[] = { "Carl1002", "password" };   // user login
+    private static String SESSION[] = { "Carl1002", "password"};            // user login
+    //private static String SESSION[];                                                       // user login
     private static User active_user;                                                           // user session instance
     private static ArrayList<User> all_users;                                           // app data
     
@@ -26,22 +32,29 @@ public class MeetUp {
     public static Connection request = new Connection();
     
     // user interface class
-    public static void main(String[] args) {
+    public static void main(String[] args)   throws IOException {
+        //Enter data using BufferReader
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Please provide username:");
+        SESSION[0] = reader.readLine();
+        System.out.println("Please provide password:");
+        SESSION[1] = reader.readLine();
+        
         if(login(SESSION)) {
             active_user = request.getCurrentUser();
             all_users = request.getAllUsers();
             initializeUI(all_users);
             System.out.println(active_user.toString());
-            printSuggestions();
-            System.out.println(".....adding new schedule item.....");
-            buildSchedule("ART-4400", "SPRING 2018 F 05:00 PM", "Student Center");  // student adds schedule item
-            System.out.println(".....creating friend request.....");
-            ((Student)active_user).addFriendRequest(1003, false);  // Carl requests friendship of Dan, false until Dan accepts
-            System.out.println(".....accepting a meet up suggestion.....");
-            ((Student)active_user).getSuggestions().get(0).toggleSuggestion();  // student accepts suggestion 1
-            ((Student)active_user).getSuggestions().get(2).toggleSuggestion();  // student accepts suggestion 3
+            //printSuggestions();
+            //System.out.println(".....adding new schedule itemBo.....");
+            //buildSchedule("ART-4400", "SPRING 2018 F 05:00 PM", "Student Center");  // student adds schedule item
+            //System.out.println(".....creating friend request.....");
+            //((Student)active_user).addFriendRequest(1003, false);  // Carl requests friendship of Dan
+            //System.out.println(".....accepting a meet up suggestion.....");
+            //((Student)active_user).getSuggestions().get(0).toggleSuggestion();  // student accepts suggestion 1
+           // ((Student)active_user).getSuggestions().get(2).toggleSuggestion();  // student accepts suggestion 3
             System.out.println(active_user.toString());
-            printSuggestions();
+            //printSuggestions();
         } else {
             System.out.println("Log in failed!");
         }
@@ -140,21 +153,22 @@ public class MeetUp {
     
     
     // initalize UI
-    public static ArrayList<User> initializeUI(ArrayList<User> data) {
+    public static void initializeUI(ArrayList<User> data) {
         data.forEach((d) -> {
             // manifest UI data
             if (d.getClass().getSimpleName().equals("Admin")) {
+                System.out.println("hello admin");
                 // synchronize admin information here
                 ((Admin)d).setStudentCount(data);
-            } else {
+            } else if (d.getClass().getSimpleName().equals("Student")) {
+                System.out.println("hello student");
                 // synchronize student messages, schedules, etc. here
                 ((Student)d).setSuggestions(buildSuggestions());
             }
         });
-        return data;
     }
-    
-    
+
+
     // print all users
     public static void populateUI(ArrayList<User> data) {
         data.forEach((d) -> {

@@ -23,12 +23,6 @@ public abstract class User implements UserInterface {
         this.name = name;
     }
     
-    // factory method for admin user
-    public static User make(int id, String name) {
-        User admin_user = new Admin(id, name);
-        return admin_user; 
-    }
-    
     // factory method for student user
     public static User make(
             int id, 
@@ -38,8 +32,12 @@ public abstract class User implements UserInterface {
             List<Friend> friends, 
             List<Schedule> schedule
     ) {
-        User student_user =  new Student(id, name, flagged, banned, friends, schedule); 
-        return student_user;
+        return new Student(id, name, flagged, banned, friends, schedule); 
+    }
+    
+    // factory method for admin user
+    public static User make(int id, String name) {
+        return new Admin(id, name);
     }
     
     @Override public int getID() { return this.id; }

@@ -11,6 +11,8 @@ import java.util.Arrays;
 import presentation_layer.Friend;
 import presentation_layer.Schedule;
 import presentation_layer.User;
+import presentation_layer.Admin;
+import presentation_layer.Student;
 
 /**
  * If actual, live REST endpoint was established, getData() would

@@ -78,32 +78,34 @@ public class MeetUp {
      // Student functionality
     // generate suggestions
     protected static ArrayList<Suggestion> buildSuggestions() {
-        ArrayList<Schedule> current_user_schedule = new ArrayList<>(((Student)active_user).getSchedule());
-        ArrayList<Suggestion> new_suggestions = new ArrayList<>();
-        int suggestion_id = 0;
-        // loop trough students collection
-        for (User us : all_users) {
-            if(us.getID() != active_user.getID() && us.getClass().getSimpleName().equals("Student")) {
-                for (Schedule s : ((Student)us).getSchedule()) {
-                    for(int i = 0; i < current_user_schedule.size(); i++) {
-                        // find common schedules
-                        if(s.getLocation().equals(current_user_schedule.get(i).getLocation())) {
-                            suggestion_id++;
-                            new_suggestions.add(
-                                new Suggestion(
-                                    suggestion_id,
-                                    us.getID(),
-                                    s.getID(),
-                                    false
-                                )
-                            );
+        if(active_user instanceof Student) {
+            ArrayList<Schedule> current_user_schedule = new ArrayList<>(((Student)active_user).getSchedule());
+            ArrayList<Suggestion> new_suggestions = new ArrayList<>();
+            int suggestion_id = 0;
+            // loop trough students collection
+            for (User us : all_users) {
+                if(us.getID() != active_user.getID() && us instanceof Student) {
+                    for (Schedule s : ((Student)us).getSchedule()) {
+                        for(int i = 0; i < current_user_schedule.size(); i++) {
+                            // find common schedules
+                            if(s.getLocation().equals(current_user_schedule.get(i).getLocation())) {
+                                suggestion_id++;
+                                new_suggestions.add(
+                                    new Suggestion(
+                                        suggestion_id,
+                                        us.getID(),
+                                        s.getID(),
+                                        false
+                                    )
+                                );
+                            }
                         }
                     }
                 }
-            }
         }
         // append to suggestions collection
         ((Student)active_user).setSuggestions(new_suggestions);
+        }
         return new ArrayList<>();
     }
     

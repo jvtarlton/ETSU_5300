@@ -21,10 +21,9 @@ import java.io.InputStreamReader;
 public class MeetUp {
 
     // prompt user for credentials
-    private static String SESSION[] = { "Carl1002", "password"};            // user login
-    //private static String SESSION[];                                                       // user login
-    private static User active_user;                                                           // user session instance
-    private static ArrayList<User> all_users;                                           // app data
+    private static String SESSION[] = { "", ""};            // user login
+    private static User active_user;                             // user session instance
+    private static ArrayList<User> all_users;              // app data
     
     // make connection with persistence layer
     public static Connection request = new Connection();
@@ -45,12 +44,13 @@ public class MeetUp {
             initializeUI(all_users);
             System.out.println(active_user.toString());
             
+            // demo specific to Student user
             if(active_user instanceof Student) { 
                 printSuggestions();
                 System.out.println(".....adding new schedule itemBo.....");
-                buildSchedule("ART-4400", "SPRING 2018 F 05:00 PM", "Student Center");  // student adds schedule item
+                buildSchedule("ART-4400", "SPRING 2018 F 05:00 PM", "Student Center");  // Carl adds schedule item
                 System.out.println(".....creating friend request.....");
-                ((Student)active_user).addFriendRequest(1003, false);  // Carl requests friendship of Dan
+                ((Student)active_user).addFriendRequest(1003, false);                         // Carl requests friendship of Dan
                 System.out.println(".....accepting a meet up suggestion.....");
                 ((Student)active_user).getSuggestions().get(0).toggleSuggestion();  // student accepts suggestion 1
                ((Student)active_user).getSuggestions().get(1).toggleSuggestion();  // student accepts suggestion 3

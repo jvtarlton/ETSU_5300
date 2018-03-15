@@ -13,8 +13,14 @@ import presentation_layer.User;
  */
 public final class Connection {
     
-    private final ArrayList<User> all_users;
+
+    // prompt user for credentials
+    public static class SESSION {
+        static String username;
+        static String password;
+    }
     private User current_user;
+    private final ArrayList<User> all_users;
     
     // represents data object
     public Connection() {

@@ -20,8 +20,6 @@ import presentation_layer.Factory;
  * @author Jim
  */
 public class DBO  implements Factory {
-    
-    private String buffer;
 
     // represents data object
     public DBO() {}

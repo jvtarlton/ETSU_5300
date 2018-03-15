@@ -43,21 +43,20 @@ public class MeetUp {
             all_users = request.getAllUsers();
             initializeUI(all_users);
             System.out.println(active_user.toString());
-            
             // demo specific to Student user
             if(active_user instanceof Student) { 
                 printSuggestions();
-                System.out.println(".....adding new schedule itemBo.....");
+                System.out.println("\n\t\t\t.....adding new schedule item.....");
                 buildSchedule("ART-4400", "SPRING 2018 F 05:00 PM", "Student Center");  // Carl adds schedule item
-                System.out.println(".....creating friend request.....");
+                System.out.println("\t\t\t.....creating friend request.....");
                 ((Student)active_user).addFriendRequest(1003, false);                         // Carl requests friendship of Dan
-                System.out.println(".....accepting a meet up suggestion.....");
-                ((Student)active_user).getSuggestions().get(0).toggleSuggestion();  // student accepts suggestion 1
-               ((Student)active_user).getSuggestions().get(1).toggleSuggestion();  // student accepts suggestion 2
+                System.out.println("\t\t\t.....accepting a meet up suggestion.....\n");
+                ((Student)active_user).getSuggestions().get(0).toggleSuggestion();  // student accepts suggestion
                 System.out.println(active_user.toString());
             }
-            if(active_user instanceof Student)
+            if(active_user instanceof Student) {
                 printSuggestions();
+            }
         } else {
             System.out.println("Log in failed!");
         }
@@ -81,17 +80,23 @@ public class MeetUp {
      // Student functionality
     // generate suggestions
     protected static ArrayList<Suggestion> buildSuggestions() {
+        ArrayList<Suggestion> new_suggestions = new ArrayList<>();
         if(active_user instanceof Student) {
+            if((((Student)active_user).getSchedule().size() > 0)) {
             ArrayList<Schedule> current_user_schedule = new ArrayList<>(((Student)active_user).getSchedule());
-            ArrayList<Suggestion> new_suggestions = new ArrayList<>();
             int suggestion_id = 0;
             // loop trough students collection
             for (User us : all_users) {
+                int match_count = 0;
                 if(us.getID() != active_user.getID() && us instanceof Student) {
                     for (Schedule s : ((Student)us).getSchedule()) {
                         for(int i = 0; i < current_user_schedule.size(); i++) {
                             // find common schedules
-                            if(s.getLocation().equals(current_user_schedule.get(i).getLocation())) {
+                            if(s.getName().equals(current_user_schedule.get(i).getName()) &&
+                                s.getTime().equals(current_user_schedule.get(i).getTime()) &&
+                                s.getLocation().equals(current_user_schedule.get(i).getLocation())
+                            ) {
+                                match_count++;
                                 suggestion_id++;
                                 new_suggestions.add(
                                     new Suggestion(
@@ -104,12 +109,18 @@ public class MeetUp {
                             }
                         }
                     }
+                    // append to suggestions collection
+                    if(match_count > 0) {
+                        ((Student)active_user).setSuggestions(new_suggestions);
+                    }
                 }
+             }
+            
+          }
+        } else {
+            System.out.println("your schedule is empty ");
         }
-        // append to suggestions collection
-        ((Student)active_user).setSuggestions(new_suggestions);
-        }
-        return new ArrayList<>();
+        return new_suggestions;
     }
     
     
@@ -117,43 +128,54 @@ public class MeetUp {
     // render and output suggestions
     protected static void printSuggestions() {
         System.out.println("Suggestions are as follows: ");
-        for (Suggestion item : ((Student)active_user).getSuggestions()) {
-            System.out.println(
-                    "\t" + item.getID() + " -- " +
-                    getStudentName(item.getFriendID()) + " has similarly scheduled item at " + 
-                    getScheduleLocation(item.getFriendID(),item.getFriendScheduleID()) +
-                    ". \tYou have " + (item.getAccepted() ? "" :  "NOT ") + "accepted the suggestion."
-            );
+        if(((Student)active_user).getSuggestions().size() > 0) {
+            for (Suggestion item : ((Student)active_user).getSuggestions()) {
+                getScheduleDetails(item.getFriendID(),item.getFriendScheduleID());
+                System.out.println(
+                        "\t" + item.getID() + " -- " +
+                        FriendScheduleItem.friend_name + " has " + 
+                        FriendScheduleItem.schedule_name + " at " + 
+                        FriendScheduleItem.schedule_location + "." + 
+                        "\tYou have " + (item.getAccepted() ? "" :  "NOT ") + "accepted the suggestion."
+                );
+            }
+        } else {
+            System.out.println("\t1 -- You currently have no similarly scheduled items to suggest.");
         }
+        System.out.println( "-------------------------------------" 
+                + "---------------------------------------------------");
+        
     }
     
     
+    public static class FriendScheduleItem {
+        public static int 
+                friend_id,
+                schedule_id;
+        public static String 
+                friend_name,
+                schedule_name,
+                schedule_time,
+                schedule_location;
+    }
+    
      // Student queries
-    // gets location of friend's scheduled item
-    public static String getScheduleLocation(int user_id, int location_id) {
+    // gets details of friend's scheduled item
+    public static void getScheduleDetails(int user_id, int location_id) {
         String location = "N/A";
         for(User user : all_users) {
             if(user.getID() == user_id) {
+                FriendScheduleItem.friend_name = user.getName();
                 for (Schedule item : ((Student)user).getSchedule()) {
                     if(item.getID() == location_id) {
-                        location = item.getLocation();
+                        FriendScheduleItem.schedule_id = item.getID();
+                        FriendScheduleItem.schedule_name = item.getName();
+                        FriendScheduleItem.schedule_time = item.getTime();
+                        FriendScheduleItem.schedule_location = item.getLocation();
                     }
                 }
             }
         }
-        return location;
-    }
-    
-    // Student queries
-    // gets name of friend
-    public static String getStudentName(int id) {
-        String name = "N/A";
-        for (User user : all_users) {
-            if(user.getID() == id) {
-                name = user.getName();
-            }
-        }
-        return name;
     }
     
     

@@ -42,7 +42,9 @@ public class Admin extends User {
     
     @Override public String toString() {
         return
-            "\n------------------" +
+            "\n=====================================" +
+                "=====================================" +
+                "==============" +
             "\nAccount Type: Admin" +
             "\nID: " + super.getID() + 
             "\nName: " + super.getName() + 

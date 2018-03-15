@@ -57,7 +57,9 @@ public class Student extends User {
     
     @Override public String toString() {
         String output =  
-            "\n------------------" +
+            "\n=====================================" +
+                "=====================================" +
+                "==============" +
             "\nAccount Type: Student" +
             "\nID: " + super.getID() + 
             "\nName: " + super.getName() + 

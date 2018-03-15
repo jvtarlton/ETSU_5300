@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 /**
  * This class is a test case for instantiating the abstract User through
  * either Admin or Student class and aggregating their corresponding 
@@ -35,26 +33,31 @@ public class MeetUp {
     public static void main(String[] args)   throws IOException {
         //Enter data using BufferReader
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Please provide username:");
+        System.out.println("Enter username (HINT -- type \"Andy1000\" for Admin or \"Bob1001\" for Student): ");
         SESSION[0] = reader.readLine();
-        System.out.println("Please provide password:");
+        System.out.println("Please provide password (HINT: type \"password\"):");
         SESSION[1] = reader.readLine();
         
         if(login(SESSION)) {
+            
             active_user = request.getCurrentUser();
             all_users = request.getAllUsers();
             initializeUI(all_users);
             System.out.println(active_user.toString());
-            //printSuggestions();
-            //System.out.println(".....adding new schedule itemBo.....");
-            //buildSchedule("ART-4400", "SPRING 2018 F 05:00 PM", "Student Center");  // student adds schedule item
-            //System.out.println(".....creating friend request.....");
-            //((Student)active_user).addFriendRequest(1003, false);  // Carl requests friendship of Dan
-            //System.out.println(".....accepting a meet up suggestion.....");
-            //((Student)active_user).getSuggestions().get(0).toggleSuggestion();  // student accepts suggestion 1
-           // ((Student)active_user).getSuggestions().get(2).toggleSuggestion();  // student accepts suggestion 3
-            System.out.println(active_user.toString());
-            //printSuggestions();
+            
+            if(active_user instanceof Student) { 
+                printSuggestions();
+                System.out.println(".....adding new schedule itemBo.....");
+                buildSchedule("ART-4400", "SPRING 2018 F 05:00 PM", "Student Center");  // student adds schedule item
+                System.out.println(".....creating friend request.....");
+                ((Student)active_user).addFriendRequest(1003, false);  // Carl requests friendship of Dan
+                System.out.println(".....accepting a meet up suggestion.....");
+                ((Student)active_user).getSuggestions().get(0).toggleSuggestion();  // student accepts suggestion 1
+               ((Student)active_user).getSuggestions().get(1).toggleSuggestion();  // student accepts suggestion 3
+                System.out.println(active_user.toString());
+            }
+            if(active_user instanceof Student)
+                printSuggestions();
         } else {
             System.out.println("Log in failed!");
         }
@@ -71,7 +74,7 @@ public class MeetUp {
     // create new schedule item
     public static void buildSchedule(String name, String time, String location) {
         int id = ((Student)active_user).getSchedule().size() + 1;
-        Schedule s = Schedule.make(id, name, time, location);
+        Schedule s = Factory.Schedule(id, name, time, location);
         ((Student)active_user).addSchedule(s);
     }
     
@@ -159,11 +162,9 @@ public class MeetUp {
         data.forEach((d) -> {
             // manifest UI data
             if (d instanceof Admin) {
-                System.out.println("hello admin");
                 // synchronize admin information here
                 ((Admin)d).setStudentCount(data);
             } else if (d instanceof Student) {
-                System.out.println("hello student");
                 // synchronize student messages, schedules, etc. here
                 ((Student)d).setSuggestions(buildSuggestions());
             }

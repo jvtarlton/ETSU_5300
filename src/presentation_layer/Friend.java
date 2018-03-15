@@ -12,14 +12,9 @@ public class Friend {
     private boolean blocked;
     
     // constructor
-    protected Friend(int id, boolean blocked) {
+    public Friend(int id, boolean blocked) {
         this.id = id;
         this.blocked = blocked;
-    }
-    
-    // factory method
-    public static Friend make(int id, boolean blocked) {
-        return new Friend(id, blocked); 
     }
     
     // functionality to let student block/unblock a friend from friends list

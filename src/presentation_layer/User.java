@@ -1,13 +1,12 @@
 
 package presentation_layer;
-import java.util.List;
 
 /**
  * This class represents the User abstract base class for system users.
  * @author Jim
  */
-public abstract class User implements UserInterface {
-    
+public abstract class User {
+        
     // private members
     private final int id;
     private String name;
@@ -23,27 +22,11 @@ public abstract class User implements UserInterface {
         this.name = name;
     }
     
-    // factory method for student user
-    public static User make(
-            int id, 
-            String name, 
-            boolean flagged, 
-            boolean banned,
-            List<Friend> friends, 
-            List<Schedule> schedule
-    ) {
-        return new Student(id, name, flagged, banned, friends, schedule); 
-    }
     
-    // factory method for admin user
-    public static User make(int id, String name) {
-        return new Admin(id, name);
-    }
-    
-    @Override public int getID() { return this.id; }
-    @Override public String getName() { return this.name; }
-    @Override public String getUsername() { return this.username; }
-    @Override public String getPassword() { return this.password; }
+    public int getID() { return this.id; }
+    public String getName() { return this.name; }
+    public String getUsername() { return this.username; }
+    public String getPassword() { return this.password; }
     
     
 }

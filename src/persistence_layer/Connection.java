@@ -16,7 +16,7 @@ public final class Connection {
     private final ArrayList<User> all_users;
     private User current_user;
     
-    // represents instance of data object
+    // represents data object
     public Connection() {
         // request user data
         DBO data = new DBO();

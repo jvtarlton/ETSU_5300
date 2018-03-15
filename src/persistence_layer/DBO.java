@@ -8,11 +8,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 // for demo
-import presentation_layer.Friend;
-import presentation_layer.Schedule;
 import presentation_layer.User;
-import presentation_layer.Admin;
-import presentation_layer.Student;
+import presentation_layer.Factory;
 
 /**
  * If actual, live REST endpoint was established, getData() would
@@ -22,7 +19,7 @@ import presentation_layer.Student;
  * User objects here for now.
  * @author Jim
  */
-public class DBO {
+public class DBO  implements Factory {
     
     private String buffer;
 
@@ -36,59 +33,59 @@ public class DBO {
             Arrays.asList(
                 
                 // User type Admin
-                User.make(1000, "Andy"),
+                Factory.User(1000, "Andy"),
                 
                 // User type Student
-                User.make(
+                Factory.User(
                     1001, "Bob", false, false, 
                     Arrays.asList(
-                        Friend.make(1002, false),
-                        Friend.make(1003, false),
-                        Friend.make(1004, false)
+                        Factory.Friend(1002, false),
+                        Factory.Friend(1003, false),
+                        Factory.Friend(1004, false)
                     ),
                     Arrays.asList(
-                        Schedule.make(1, "CSCI-1100", "SPRING 2018 MWF 10:00 AM", "Gilbreath Hall"),
-                        Schedule.make(2, "CSCI-1300", "SPRING 2018 TTh 12:00 PM", "Nicks Hall")
+                        Factory.Schedule(1, "CSCI-1100", "SPRING 2018 MWF 10:00 AM", "Gilbreath Hall"),
+                        Factory.Schedule(2, "CSCI-1300", "SPRING 2018 TTh 12:00 PM", "Nicks Hall")
                     )
                 ),
 
                 // User type Student
-                User.make(
+                Factory.User(
                     1002, "Carl", true, false,
                     Arrays.asList(
-                        Friend.make(1001, false),
-                        Friend.make(1003, true)
+                        Factory.Friend(1001, false),
+                        Factory.Friend(1003, true)
                     ),
                     Arrays.asList(
-                        Schedule.make(1, "CSCI-1100", "SPRING 2018 MWF 10:00 AM", "Gilbreath"),
-                        Schedule.make(2, "CSCI-1200", "SPRING 2018 TTh  11:15 AM", "Nicks Hall"),
-                        Schedule.make(3, "CSCI-1300", "SPRING 2018 TTh 12:00 PM", "Nicks Hall"),
-                        Schedule.make(4, "ENG-5400", "SPRING 2018 F 07:00 PM", "Sherrod")
+                        Factory.Schedule(1, "CSCI-1100", "SPRING 2018 MWF 10:00 AM", "Gilbreath"),
+                        Factory.Schedule(2, "CSCI-1200", "SPRING 2018 TTh  11:15 AM", "Nicks Hall"),
+                        Factory.Schedule(3, "CSCI-1300", "SPRING 2018 TTh 12:00 PM", "Nicks Hall"),
+                        Factory.Schedule(4, "ENG-5400", "SPRING 2018 F 07:00 PM", "Sherrod")
                     )
                 ),
 
                 // User type Student
-                User.make(
+                Factory.User(
                     1003, "Dan", true, true,
                     Arrays.asList(
-                        Friend.make(1001, false)
+                        Factory.Friend(1001, false)
                     ),
                     Arrays.asList(
-                        Schedule.make(1, "ENG-2500", "SPRING 2018 W 03:00 PM", "Gilbreath"),
-                        Schedule.make(2, "ENG-5400", "SPRING 2018 F 07:00 PM", "Sherrod")
+                        Factory.Schedule(1, "ENG-2500", "SPRING 2018 W 03:00 PM", "Gilbreath"),
+                        Factory.Schedule(2, "ENG-5400", "SPRING 2018 F 07:00 PM", "Sherrod")
                     )
                 ),
 
                 // User type Student
-                User.make(
+                Factory.User(
                     1004, "Eric", true, true,
                     Arrays.asList(
-                        Friend.make(1002, false),
-                        Friend.make(1003, false)
+                        Factory.Friend(1002, false),
+                        Factory.Friend(1003, false)
                     ),
                     Arrays.asList(
-                        Schedule.make(1, "ENG-2500", "SPRING 2018 W 03:00 PM", "Gilbreath"),
-                        Schedule.make(2, "CSCI-1300", "SPRING 2018 TTh 12:00 PM", "Lineberger")
+                        Factory.Schedule(1, "ENG-2500", "SPRING 2018 W 03:00 PM", "Gilbreath"),
+                        Factory.Schedule(2, "CSCI-1300", "SPRING 2018 TTh 12:00 PM", "Lineberger")
                     )
                 )
                  

@@ -21,16 +21,6 @@ public class Schedule {
         this.location = location;
     }
     
-    // factory method
-    public static Schedule make(
-            int id, 
-            String name, 
-            String time, 
-            String location
-    ) {
-        return new Schedule(id, name, time, location); 
-    }
-    
     protected int getID() { return this.id; }
     protected String getName() { return this.name; }
     protected String getTime() { return this.time; }

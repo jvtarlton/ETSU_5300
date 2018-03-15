@@ -13,9 +13,6 @@ public class Suggestion {
     protected int friend_schedule_id;
     protected boolean accepted;
     
-    // no-arg constructor
-    public Suggestion() {}
-    
     // constructor
     public Suggestion(
             int id, 
@@ -27,16 +24,6 @@ public class Suggestion {
         this.friend_id = friend_id;
         this.friend_schedule_id = friend_schedule_id;
         this.accepted = accepted;
-    }
-    
-    // factory method
-    static Suggestion make(
-        int id, 
-        int friend_id, 
-        int friend_schedule_id, 
-        boolean accepted
-    ) {
-        return new Suggestion(id, friend_id, friend_schedule_id, accepted); 
     }
     
     // functionality for accepting/denying schedule suggestion

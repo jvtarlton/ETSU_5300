@@ -32,7 +32,7 @@ public class MeetUp {
     public static void main(String[] args)   throws IOException {
         //Enter data using BufferReader
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Enter username (HINT -- type \"Andy1000\" for Admin or \"Bob1001\" for Student): ");
+        System.out.println("Enter username (HINT -- type \"Andy1000\" for Admin or \"Carl1002\" for Student): ");
         SESSION[0] = reader.readLine();
         System.out.println("Please provide password (HINT: type \"password\"):");
         SESSION[1] = reader.readLine();
@@ -53,7 +53,7 @@ public class MeetUp {
                 ((Student)active_user).addFriendRequest(1003, false);                         // Carl requests friendship of Dan
                 System.out.println(".....accepting a meet up suggestion.....");
                 ((Student)active_user).getSuggestions().get(0).toggleSuggestion();  // student accepts suggestion 1
-               ((Student)active_user).getSuggestions().get(1).toggleSuggestion();  // student accepts suggestion 3
+               ((Student)active_user).getSuggestions().get(1).toggleSuggestion();  // student accepts suggestion 2
                 System.out.println(active_user.toString());
             }
             if(active_user instanceof Student)

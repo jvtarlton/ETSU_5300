@@ -34,7 +34,7 @@ public class MeetUp {
         SESSION[0] = reader.readLine();
         System.out.println("Enter password (HINT: type \"password\"):");
         SESSION[1] = reader.readLine();
-        control ctrl = new control();
+        Control ctrl = new Control();
         
         // condition for succesful login
         if(ctrl.login(SESSION)) {

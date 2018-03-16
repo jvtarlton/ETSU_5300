@@ -12,7 +12,7 @@ import java.util.ArrayList;
 *
 * @author Jim
 */
-public class control {
+public class Control {
 
 
     // private members
@@ -26,7 +26,7 @@ public class control {
 
 
     // Control mutators
-    public control() {}
+    public Control() {}
     public void setActiveUser(User active_user) {
         this.active_user = active_user;
     }

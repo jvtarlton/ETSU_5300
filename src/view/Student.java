@@ -1,5 +1,5 @@
 
-package presentation_layer;
+package view;
 import java.util.*;
 
 /**
@@ -7,6 +7,7 @@ import java.util.*;
  * @author Jim
  */
 public class Student extends User {
+    
     
     // private members
     private boolean flagged;
@@ -33,32 +34,30 @@ public class Student extends User {
         this.schedule = schedule;
     }
     
-    protected List<Friend> getFriends() {
-        return this.friends;
-    }
     
-    protected List<Schedule> getSchedule() {
-        return this.schedule;
-    }
+    // Student accessors
+    public List<Friend> getFriends() { return this.friends;  }
+    public List<Schedule> getSchedule() { return this.schedule; }
+    public List<Suggestion> getSuggestions() { return this.suggestions; }
     
-    protected List<Suggestion> getSuggestions() {
-        return this.suggestions;
-    }
     
-    protected void setSuggestions(ArrayList<Suggestion> suggestions) {
+    // Student mutators
+    public void setSuggestions(ArrayList<Suggestion> suggestions) {
         this.suggestions = suggestions;
     }
-
-    protected void addSchedule(Schedule s) {
+    
+    public void addSchedule(Schedule s) {
         ArrayList<Schedule> tmp = new ArrayList<>(schedule);
         tmp.add(s);
         schedule = tmp;
     }
     
-    protected void addFriendRequest(int id, boolean accepted) {
+    public void addFriendRequest(int id, boolean accepted) {
         FriendRequest f = new FriendRequest(id, accepted);
     }
     
+    
+    // prints object members
     @Override public String toString() {
         String output =  
             "\n===============================" +

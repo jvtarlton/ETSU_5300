@@ -1,5 +1,5 @@
 
-package presentation_layer;
+package view;
 
 /**
  * This class is a Student aggregate class

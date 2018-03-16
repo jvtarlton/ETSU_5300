@@ -1,19 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package presentation_layer;
+
+package view;
 
 /**
- *
+ * This class is a Student aggregate class
  * @author Jim
  */
 public class FriendRequest {
     
+    
+    // private members
     private int id;
     private boolean accept;
     
+    
+    // constructor
     FriendRequest(int id, boolean accept) {
         this.id = id;
         this.accept = accept;

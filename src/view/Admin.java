@@ -1,5 +1,5 @@
 
-package presentation_layer;
+package view;
 import java.util.*;
 
 /**
@@ -8,10 +8,13 @@ import java.util.*;
  */
 public class Admin extends User {
     
+    
+    // private members
     private int student_count;
     private int message_count;
     private int suggestion_count;
     private int connection_count;
+    
     
     // constructor
     protected Admin(int id, String name) {
@@ -19,10 +22,10 @@ public class Admin extends User {
     }
     
     /**
-     * additional administrator functionality 
+     * additional administrator functionality for displaying user count
      * @param data
      */
-    protected void setStudentCount(ArrayList<User> data) { 
+    public void setStudentCount(ArrayList<User> data) { 
         int count = 0;
         for(int j = 0; j < data.size(); j++) {
             String user_type = data.get(j).getClass().getSimpleName();
@@ -31,6 +34,8 @@ public class Admin extends User {
         this.student_count = count;
     }
     
+    
+    // Admin accessors
     protected int getStudentCount() { return this.student_count; };
     protected int getSuggestionCount() { return this.suggestion_count; };
     protected int getConnectionCount() { return this.connection_count; };
@@ -40,6 +45,8 @@ public class Admin extends User {
     protected Friend getBlockedStuents() { return new Friend(9999, false); };
     protected int banStudent() { return 0; };
     
+    
+    // prints object members
     @Override public String toString() {
         return
             "\n=====================================" +

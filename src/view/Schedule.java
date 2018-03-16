@@ -1,5 +1,5 @@
 
-package presentation_layer;
+package view;
 
 /**
  * This class is a Student aggregate class
@@ -7,12 +7,14 @@ package presentation_layer;
  */
 public class Schedule {
     
+    
     // protected members
     private int id;
     private String name;
     private String time;
     private String location;
-
+    
+    
     // constructor
     public Schedule(int id, String name, String time, String location) {
         this.id = id;
@@ -21,10 +23,13 @@ public class Schedule {
         this.location = location;
     }
     
-    protected int getID() { return this.id; }
-    protected String getName() { return this.name; }
-    protected String getTime() { return this.time; }
-    protected String getLocation() { return this.location; }
+    
+    // Schedule accessors
+    public int getID() { return this.id; }
+    public String getName() { return this.name; }
+    public String getTime() { return this.time; }
+    public String getLocation() { return this.location; }
+    
     
     // toString to print schedule item
     @Override public String toString() {

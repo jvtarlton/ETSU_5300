@@ -1,5 +1,5 @@
 
-package presentation_layer;
+package view;
 
 /**
  * This class represents the User abstract base class for system users.
@@ -7,11 +7,13 @@ package presentation_layer;
  */
 public abstract class User {
         
+    
     // private members
     private final int id;
     private String name;
     private String username;
     private String password;
+    
     
     // base constructor
     protected User(int id, String name) {
@@ -23,6 +25,7 @@ public abstract class User {
     }
     
     
+    // User accessors
     public int getID() { return this.id; }
     public String getName() { return this.name; }
     public String getUsername() { return this.username; }

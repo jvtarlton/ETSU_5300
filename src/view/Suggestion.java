@@ -1,5 +1,5 @@
 
-package presentation_layer;
+package view;
 
 /**
  * This class is a Student aggregate class
@@ -7,11 +7,13 @@ package presentation_layer;
  */
 public class Suggestion {
     
+    
     // protected members
     protected int id;
     protected int friend_id;
     protected int friend_schedule_id;
     protected boolean accepted;
+    
     
     // constructor
     public Suggestion(
@@ -26,30 +28,20 @@ public class Suggestion {
         this.accepted = accepted;
     }
     
+    
     // functionality for accepting/denying schedule suggestion
     public void toggleSuggestion() {
         this.accepted = ((this.accepted != true));
     }
     
-    public int getID(){
-        return this.id;
-    }
     
-    public int getFriendID(){
-        return this.friend_id;
-    }
+    // Suggestion accessors
+    public int getID(){ return this.id; }
+    public int getFriendID(){ return this.friend_id; }
+    public int getFriendScheduleID(){ return this.friend_schedule_id; }
+    public boolean getAccepted(){ return this.accepted; }
+    public boolean getCurrentlyFriend(){ return this.accepted; }
     
-    public int getFriendScheduleID(){
-        return this.friend_schedule_id;
-    }
-    
-    public boolean getAccepted(){
-        return this.accepted;
-    }
-    
-    public boolean getCurrentlyFriend(){
-        return this.accepted;
-    }
     
     // toString to print suggestion item
     @Override public String toString() {
@@ -59,4 +51,6 @@ public class Suggestion {
             this.friend_schedule_id + ".  You have " + ((this.accepted) ? "" : "not ") +
              "accepted this suggtestion.\n";
     }
+    
+    
 }

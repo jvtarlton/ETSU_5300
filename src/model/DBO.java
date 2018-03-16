@@ -3,19 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package persistence_layer;
+package model;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 // for demo
-import presentation_layer.User;
-import presentation_layer.Factory;
+import view.User;
+import view.Factory;
 
 /**
- * If actual, live REST endpoint was established, getData() would
- * return a JSON blob as a string; thus, no presentation_layer imports
- * would be needed. The User objects would then be instantiated in the
- * Connection.parseData() method. I've simplified the demo by instantiating
+ * The User objects would then be instantiated in the
+ * Connection.parseData() method for instantiating
  * User objects here for now.
  * @author Jim
  */

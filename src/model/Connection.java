@@ -3,24 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package persistence_layer;
+package model;
 import java.util.ArrayList;
-import presentation_layer.User;
+import view.User;
 
 /**
- * If 
  * @author Jim
  */
 public final class Connection {
     
-
+    
+    // private members
+    private User current_user;
+    private final ArrayList<User> all_users;
+    
+    
     // prompt user for credentials
     public static class SESSION {
         static String username;
         static String password;
     }
-    private User current_user;
-    private final ArrayList<User> all_users;
+    
     
     // represents data object
     public Connection() {
@@ -29,7 +32,8 @@ public final class Connection {
         this.all_users = parseDataa(data.getData());
     }
     
-    public boolean verify(String[] s) {
+    
+    public  boolean verify(String[] s) {
         // decrypt password
         // password = decrypt(password);
         boolean flag = false;
@@ -56,6 +60,7 @@ public final class Connection {
         // add blob[i] to User array
         return data;
     }
+    
     
     // returns session user data
     public ArrayList<User> getAllUsers() {

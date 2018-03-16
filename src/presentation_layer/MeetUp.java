@@ -34,27 +34,28 @@ public class MeetUp {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Enter username (HINT -- type \"Andy1000\" for Admin or \"Carl1002\" for Student): ");
         SESSION[0] = reader.readLine();
-        System.out.println("Please provide password (HINT: type \"password\"):");
+        System.out.println("Enter password (HINT: type \"password\"):");
         SESSION[1] = reader.readLine();
-        
         if(login(SESSION)) {
-            
             active_user = request.getCurrentUser();
             all_users = request.getAllUsers();
             initializeUI(all_users);
             System.out.println(active_user.toString());
             // demo specific to Student user
-            if(active_user instanceof Student) { 
+            if(active_user instanceof Student) {
+                printFriends();
                 printSuggestions();
-                System.out.println("\n\t\t\t.....adding new schedule item.....");
+                System.out.println("\n\t\t\t\t\t .....adding new scheduled item.....");
                 buildSchedule("ART-4400", "SPRING 2018 F 05:00 PM", "Student Center");  // Carl adds schedule item
-                System.out.println("\t\t\t.....creating friend request.....");
+                System.out.println("\t\t\t\t\t .....creating a friend request.....");
                 ((Student)active_user).addFriendRequest(1003, false);                         // Carl requests friendship of Dan
-                System.out.println("\t\t\t.....accepting a meet up suggestion.....\n");
-                ((Student)active_user).getSuggestions().get(0).toggleSuggestion();  // student accepts suggestion
+                System.out.println("\t\t\t\t\t.....accepting MeetUp suggestion.....\n");
+                if(((Student)active_user).getSuggestions().size() > 0)
+                    ((Student)active_user).getSuggestions().get(0).toggleSuggestion();  // student accepts suggestion
                 System.out.println(active_user.toString());
             }
             if(active_user instanceof Student) {
+                printFriends();
                 printSuggestions();
             }
         } else {
@@ -87,7 +88,6 @@ public class MeetUp {
             int suggestion_id = 0;
             // loop trough students collection
             for (User us : all_users) {
-                int match_count = 0;
                 if(us.getID() != active_user.getID() && us instanceof Student) {
                     for (Schedule s : ((Student)us).getSchedule()) {
                         for(int i = 0; i < current_user_schedule.size(); i++) {
@@ -96,7 +96,6 @@ public class MeetUp {
                                 s.getTime().equals(current_user_schedule.get(i).getTime()) &&
                                 s.getLocation().equals(current_user_schedule.get(i).getLocation())
                             ) {
-                                match_count++;
                                 suggestion_id++;
                                 new_suggestions.add(
                                     new Suggestion(
@@ -110,30 +109,30 @@ public class MeetUp {
                         }
                     }
                     // append to suggestions collection
-                    if(match_count > 0) {
+                    if(suggestion_id > 0) {
                         ((Student)active_user).setSuggestions(new_suggestions);
                     }
                 }
              }
-            
           }
-        } else {
-            System.out.println("your schedule is empty ");
-        }
+        } 
         return new_suggestions;
     }
     
     
      // Student functionality
     // render and output suggestions
-    protected static void printSuggestions() {
-        System.out.println("Suggestions are as follows: ");
+        protected static void printSuggestions() {
+        System.out.println("\n\nSuggestions are as follows: ");
         if(((Student)active_user).getSuggestions().size() > 0) {
             for (Suggestion item : ((Student)active_user).getSuggestions()) {
                 getScheduleDetails(item.getFriendID(),item.getFriendScheduleID());
+                int friend_status = getFriendStatus(all_users, active_user, FriendScheduleItem.friend_id);
                 System.out.println(
                         "\t" + item.getID() + " -- " +
-                        FriendScheduleItem.friend_name + " has " + 
+                        (friend_status == 1 ? "mutual friend " : (friend_status == 2 ? "blocked-friend " : "non-friend ")) +
+                        FriendScheduleItem.friend_name + " with ID " + 
+                        FriendScheduleItem.friend_id + " has " + 
                         FriendScheduleItem.schedule_name + " at " + 
                         FriendScheduleItem.schedule_location + "." + 
                         "\tYou have " + (item.getAccepted() ? "" :  "NOT ") + "accepted the suggestion."
@@ -142,8 +141,9 @@ public class MeetUp {
         } else {
             System.out.println("\t1 -- You currently have no similarly scheduled items to suggest.");
         }
-        System.out.println( "-------------------------------------" 
-                + "---------------------------------------------------");
+        System.out.println( "--------------------------------" 
+                + "----------------------------------------------"
+                + "----------------------------------------------");
         
     }
     
@@ -165,6 +165,7 @@ public class MeetUp {
         String location = "N/A";
         for(User user : all_users) {
             if(user.getID() == user_id) {
+                FriendScheduleItem.friend_id = user.getID();
                 FriendScheduleItem.friend_name = user.getName();
                 for (Schedule item : ((Student)user).getSchedule()) {
                     if(item.getID() == location_id) {
@@ -176,6 +177,42 @@ public class MeetUp {
                 }
             }
         }
+    }
+    
+    // Student queries
+    // gets name of a students friend
+    public static void printFriends() {
+        System.out.print("\nFriends list is as follows:");
+        if(((Student)active_user).getFriends().size() > 0) {
+            for (Friend friend : ((Student)active_user).getFriends()) {
+                for(User other_user : all_users) {
+                    if(friend.getID() == other_user.getID()) {
+                        System.out.print("\n\t" + other_user.getID());
+                        System.out.print(" -- " + other_user.getName() + " is a(n) " +
+                                (!friend.getBlockStatus() ? "active friend" : "blocked friend") 
+                        );
+                    }
+                } 
+            }
+        } else {
+            System.out.println("\t1 -- You currently have no friends to display");
+        }
+    }
+    
+    // Student queries
+    // finds if two students are friends; and if so, that friend is not blocked
+    public static int getFriendStatus(ArrayList<User> all_users, User active_user, int lookup_user_id ) {
+        int is_friend = 0;
+        for (Friend friend : ((Student)active_user).getFriends()) {
+            if(friend.getID() == lookup_user_id) {
+                if(friend.getBlockStatus() == false) {
+                    is_friend = 1;
+                } else {
+                    is_friend = 2;
+                }
+            }
+        }
+        return is_friend;
     }
     
     

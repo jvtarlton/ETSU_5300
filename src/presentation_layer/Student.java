@@ -33,6 +33,10 @@ public class Student extends User {
         this.schedule = schedule;
     }
     
+    protected List<Friend> getFriends() {
+        return this.friends;
+    }
+    
     protected List<Schedule> getSchedule() {
         return this.schedule;
     }
@@ -57,17 +61,22 @@ public class Student extends User {
     
     @Override public String toString() {
         String output =  
-            "\n=====================================" +
-                "=====================================" +
-                "==============" +
+            "\n===============================" +
+                "===============================" +
+                "===============================" +
+                "===============================" +
             "\nAccount Type: Student" +
             "\nID: " + super.getID() + 
             "\nName: " + super.getName() + 
             "\nFriend count: " + this.friends.size() +
             "\nSchedule is as follows: ";
-            for (Schedule s : this.schedule) {
-                output += "\n" + s.toString();
-            };
+            if(this.schedule.size() > 0) {
+                for (Schedule s : this.schedule) {
+                    output += "\n" + s.toString();
+                };
+            } else {
+                output += "\n\t1 -- You do not have any items scheduled.";
+            }
         return output;
     }
     

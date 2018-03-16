@@ -47,6 +47,10 @@ public class Suggestion {
         return this.accepted;
     }
     
+    public boolean getCurrentlyFriend(){
+        return this.accepted;
+    }
+    
     // toString to print suggestion item
     @Override public String toString() {
         return "\t" + 

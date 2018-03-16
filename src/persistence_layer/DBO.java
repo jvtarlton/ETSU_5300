@@ -42,8 +42,8 @@ public class DBO  implements Factory {
                         Factory.Friend(1004, false)
                     ),
                     Arrays.asList(
-                        Factory.Schedule(1, "CSCI-1100", "SPRING 2018 MWF 10:00 AM", "Gilbreath Hall"),
-                        Factory.Schedule(2, "CSCI-1300", "SPRING 2018 TTh 12:00 PM", "Nicks Hall")
+                        Factory.Schedule(1, "CSC-1100", "SPRING 2018 MWF 10:00 AM", "Gilbreath Hall"),
+                        Factory.Schedule(2, "CSC-1300", "SPRING 2018 TTh 12:00 PM", "Dr Nicks Hall")
                     )
                 ),
 
@@ -55,10 +55,10 @@ public class DBO  implements Factory {
                         Factory.Friend(1003, true)
                     ),
                     Arrays.asList(
-                        Factory.Schedule(1, "CSCI-1100", "SPRING 2018 MWF 10:00 AM", "Gilbreath"),
-                        Factory.Schedule(2, "CSCI-1200", "SPRING 2018 TTh  11:15 AM", "Nicks Hall"),
-                        Factory.Schedule(3, "CSCI-1300", "SPRING 2018 TTh 12:00 PM", "Nicks Hall"),
-                        Factory.Schedule(4, "ENG-5400", "SPRING 2018 F 07:00 PM", "Sherrod")
+                        Factory.Schedule(1, "CSC-1100", "SPRING 2018 MWF 10:00 AM", "Gilbreath Hall"),
+                        Factory.Schedule(2, "CSC-1200", "SPRING 2018 TTh  11:15 AM", "Dr Nicks Hall"),
+                        Factory.Schedule(3, "CSC-1300", "SPRING 2018 TTh 12:00 PM", "Dr Nicks Hall"),
+                        Factory.Schedule(4, "ENG-5400", "SPRING 2018 F 07:00 PM", "Sherrod Library")
                     )
                 ),
 
@@ -69,8 +69,8 @@ public class DBO  implements Factory {
                         Factory.Friend(1001, false)
                     ),
                     Arrays.asList(
-                        Factory.Schedule(1, "ENG-2500", "SPRING 2018 W 03:00 PM", "Gilbreath"),
-                        Factory.Schedule(2, "ENG-5400", "SPRING 2018 F 07:00 PM", "Sherrod")
+                        Factory.Schedule(1, "ENG-2500", "SPRING 2018 W 03:00 PM", "Gilbreath Hall"),
+                        Factory.Schedule(2, "ENG-5400", "SPRING 2018 F 07:00 PM", "Sherrod Library")
                     )
                 ),
 
@@ -82,8 +82,8 @@ public class DBO  implements Factory {
                         Factory.Friend(1003, false)
                     ),
                     Arrays.asList(
-                        Factory.Schedule(1, "ENG-2500", "SPRING 2018 W 03:00 PM", "Gilbreath"),
-                        Factory.Schedule(2, "CSCI-1300", "SPRING 2018 TTh 12:00 PM", "Lineberger")
+                        Factory.Schedule(1, "ENG-2500", "SPRING 2018 W 03:00 PM", "Gilbreath Hall"),
+                        Factory.Schedule(2, "CSC-1300", "SPRING 2018 TTh 12:00 PM", "Lineberger Hall")
                     )
                 )
                  

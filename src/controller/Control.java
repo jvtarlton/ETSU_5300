@@ -3,7 +3,7 @@
 * To change this template file, choose Tools | Templates
 * and open the template in the editor.
 */
-package conroller;
+package controller;
 import model.*;
 import view.*;
 
@@ -24,9 +24,12 @@ public class Control {
     public User getActiveUser() { return active_user; }
     public ArrayList<User> getAllUsers() { return all_users; }
 
-
-    // Control mutators
+    
+    // constructor
     public Control() {}
+    
+    
+    // Control mutators
     public void setActiveUser(User active_user) {
         this.active_user = active_user;
     }
@@ -42,10 +45,10 @@ public class Control {
     // Student components
     // structure to render a schedule 
     public static class FriendScheduleItem {
-        public static int 
+        private static int 
                 friend_id,
                 schedule_id;
-        public static String 
+        private static String 
                 friend_name,
                 schedule_name,
                 schedule_time,
@@ -209,7 +212,7 @@ public class Control {
             // manifest UI data
             if (d instanceof Admin) {
                 // synchronize admin information here
-                ((Admin)d).setStudentCount(data);
+                ((Admin)d).setUserCounts(data);
             } else if (d instanceof Student) {
                 // synchronize student messages, schedules, etc. here
                 ((Student)d).setSuggestions(buildSuggestions());

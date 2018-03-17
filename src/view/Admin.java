@@ -10,7 +10,9 @@ public class Admin extends User {
     
     
     // private members
-    private int student_count;
+    private int user_count;             // count of all users, including admins
+    private int admin_count;        // count of all admin users
+    private int student_count;      // count of all student users
     private int message_count;
     private int suggestion_count;
     private int connection_count;
@@ -25,17 +27,21 @@ public class Admin extends User {
      * additional administrator functionality for displaying user count
      * @param data
      */
-    public void setStudentCount(ArrayList<User> data) { 
-        int count = 0;
-        for(int j = 0; j < data.size(); j++) {
-            String user_type = data.get(j).getClass().getSimpleName();
-            count += user_type.equals("Student") ? 1 : 0;
-        }
-        this.student_count = count;
+    public void setUserCounts(ArrayList<User> data) { 
+        data.forEach((user) -> {
+            if(user instanceof Admin) {
+                this.admin_count++;
+            } else if (user instanceof Student) {
+                this.student_count++;
+            }
+        });
+        this.user_count = data.size();
     }
     
     
     // Admin accessors
+    protected int getUserCount() { return this.user_count; };
+    protected int getAdminCount() { return this.admin_count; };
     protected int getStudentCount() { return this.student_count; };
     protected int getSuggestionCount() { return this.suggestion_count; };
     protected int getConnectionCount() { return this.connection_count; };
@@ -55,6 +61,8 @@ public class Admin extends User {
             "\nAccount Type: Admin" +
             "\nID: " + super.getID() + 
             "\nName: " + super.getName() + 
+            "\nUser count: " + this.getUserCount() +
+            "\nAdmin count: " + this.getAdminCount() +
             "\nStudent count: " + this.getStudentCount() +
             "\n";
     }

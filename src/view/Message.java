@@ -21,14 +21,9 @@ public class Message {
         this.body = body;
     }
     
-    // factory method
-    protected static Message make(
-            int id, 
-            int receiver_id, 
-            String sent_time, 
-            String body
-    ) {
-        return new Message(id, receiver_id, sent_time, body); 
+    // accessors
+    public int getID() {
+        return id;
     }
     
 }

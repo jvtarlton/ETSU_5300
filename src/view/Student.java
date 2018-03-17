@@ -15,6 +15,7 @@ public class Student extends User {
     private List<Friend> friends;
     private List<Schedule> schedule;
     private List<Suggestion> suggestions;
+    private List <Message> message;
     private ArrayList<FriendRequest> friend_requests;
     
     
@@ -46,14 +47,32 @@ public class Student extends User {
         this.suggestions = suggestions;
     }
     
+    public void addFriendRequest(int id, boolean accepted) {
+        FriendRequest f = new FriendRequest(id, accepted);
+    }
+    
     public void addSchedule(Schedule s) {
         ArrayList<Schedule> tmp = new ArrayList<>(schedule);
         tmp.add(s);
         schedule = tmp;
     }
     
-    public void addFriendRequest(int id, boolean accepted) {
-        FriendRequest f = new FriendRequest(id, accepted);
+    public void deleteSchedule(int id) {
+        schedule.stream().filter((item) -> (item.getID() == id)).forEachOrdered((item) -> {
+            schedule.remove(item);
+        });
+    }
+    
+    public void addMessage(Message m) {
+        ArrayList<Message> tmp = new ArrayList<>(message);
+        tmp.add(m);
+        message = tmp;
+    }
+    
+    public void deleteMessage(int id) {
+        message.stream().filter((item) -> (item.getID() == id)).forEachOrdered((item) -> {
+            message.remove(item);
+        });
     }
     
     

@@ -18,10 +18,14 @@ import view.Factory;
  * @author Jim
  */
 public class DBO  implements Factory {
+    
+    // Stream buffer for database communication
+    private String buffer;
 
     // represents data object
     public DBO() {}
     
+    // represents data stream
     public ArrayList<User> getData() {
         
         return  new ArrayList<>(

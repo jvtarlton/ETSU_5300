@@ -29,7 +29,7 @@ public final class Connection {
     public Connection() {
         // request user data
         DBO data = new DBO();
-        this.all_users = parseDataa(data.getData());
+        this.all_users = parseData(data.getData());
     }
     
     
@@ -54,7 +54,7 @@ public final class Connection {
     
     
     // intended to accept JSON blob used to instantiate User objects 
-    public ArrayList<User> parseDataa(ArrayList<User> data) {
+    public ArrayList<User> parseData(ArrayList<User> data) {
         // initialize new User array
         // loop blob
         // add blob[i] to User array

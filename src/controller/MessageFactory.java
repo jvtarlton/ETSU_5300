@@ -1,17 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package controller;
 
+package controller;
 import model.Image;
 import model.Message;
 import model.Text;
 
 /**
- *
- * @author jvtar
+ * This is the factory pattern implementation interface for Message concretion
  */
 public interface MessageFactory {
     

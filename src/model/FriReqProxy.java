@@ -1,16 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package model;
 
-import model.FriReqInterface;
-import model.FriendRequest;
-
 /**
- *
- * @author jvtar
+ * This is a proxy class for the FriendRequest class
  */
 public class FriReqProxy implements FriReqInterface {
     

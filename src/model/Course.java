@@ -3,10 +3,8 @@ package model;
 
 /**
  * This class is a Student aggregate class
- * @author Jim
  */
-public class Schedule {
-    
+public class Course {
     
     // protected members
     private int id;
@@ -14,22 +12,19 @@ public class Schedule {
     private String time;
     private String location;
     
-    
     // constructor
-    public Schedule(int id, String name, String time, String location) {
+    public Course(int id, String name, String time, String location) {
         this.id = id;
         this.name = name;
         this.time = time;
         this.location = location;
     }
     
-    
-    // Schedule accessors
+    // Course accessors
     public int getID() { return this.id; }
     public String getName() { return this.name; }
     public String getTime() { return this.time; }
     public String getLocation() { return this.location; }
-    
     
     // toString to print schedule item
     @Override public String toString() {

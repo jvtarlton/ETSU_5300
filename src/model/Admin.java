@@ -1,12 +1,9 @@
 
 package model;
-import model.Student;
-import model.User;
 import java.util.*;
 
 /**
- * This class represents the Admin subclass user type
- * @author Jim
+ * This class represents a concretion of the User abstract
  */
 public class Admin extends User {
     

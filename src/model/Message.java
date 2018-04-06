@@ -3,7 +3,6 @@ package model;
 
 /**
  * This class is a Student aggregate class
- * @author Jim
  */
 public abstract class Message {
     

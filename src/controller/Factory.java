@@ -4,14 +4,13 @@ import java.util.List;
 import model.Admin;
 import model.CarPooler;
 import model.Friend;
-import model.Schedule;
+import model.Course;
 import model.Student;
 import model.Suggestion;
 import model.User;
 
 /**
- *
- * @author jvtar
+ * This is the factory pattern implementation interface for User concretion
  */
 public interface Factory {
     
@@ -44,7 +43,7 @@ public interface Factory {
             boolean flagged, 
             boolean banned,
             List<Friend> friends, 
-            List<Schedule> schedule
+            List<Course> schedule
     ) {
         return new Student(id, name, flagged, banned, friends, schedule); 
     }
@@ -55,15 +54,15 @@ public interface Factory {
         return new Friend(id, blocked); 
     }
     // -------------------------------------------------------------------------
-    // Student - Schedule
+    // Student - Course
     // -------------------------------------------------------------------------
-    public static Schedule Schedule(
+    public static Course Course(
             int id, 
             String name, 
             String time, 
             String location
     ) {
-        return new Schedule(id, name, time, location); 
+        return new Course(id, name, time, location); 
     }
     // -------------------------------------------------------------------------
     // Student - Suggestion

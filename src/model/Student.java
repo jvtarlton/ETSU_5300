@@ -1,11 +1,9 @@
 
 package model;
-import model.User;
 import java.util.*;
 
 /**
- * This class represents the Student subclass user type
- * @author Jim
+ * This class represents a concretion of the User abstract
  */
 public class Student extends User {
     
@@ -14,7 +12,7 @@ public class Student extends User {
     private boolean flagged;
     private boolean banned;
     private List<Friend> friends;
-    private List<Schedule> schedule;
+    private List<Course> schedule;
     private List<Suggestion> suggestions;
     private List<Message> message;
     private List<FriReqProxy> friend_request_proxies;
@@ -27,7 +25,7 @@ public class Student extends User {
             boolean flagged,
             boolean banned, 
             List<Friend> friends, 
-            List<Schedule> schedule
+            List<Course> schedule
     ) {
         super(id, name);
         this.flagged = flagged;
@@ -39,7 +37,7 @@ public class Student extends User {
     
     // Student accessors
     public List<Friend> getFriends() { return this.friends;  }
-    public List<Schedule> getSchedule() { return this.schedule; }
+    public List<Course> getSchedule() { return this.schedule; }
     public List<Suggestion> getSuggestions() { return this.suggestions; }
     
     
@@ -56,8 +54,8 @@ public class Student extends User {
         friend_request_proxies = tmp;
     }
     
-    public void addSchedule(Schedule s) {
-        ArrayList<Schedule> tmp = new ArrayList<>(schedule);
+    public void addSchedule(Course s) {
+        ArrayList<Course> tmp = new ArrayList<>(schedule);
         tmp.add(s);
         schedule = tmp;
     }
@@ -94,7 +92,7 @@ public class Student extends User {
             "\nFriend count: " + this.friends.size() +
             "\nSchedule is as follows: ";
             if(this.schedule.size() > 0) {
-                for (Schedule s : this.schedule) {
+                for (Course s : this.schedule) {
                     output += "\n" + s.toString();
                 };
             } else {

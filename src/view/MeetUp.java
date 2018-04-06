@@ -1,9 +1,7 @@
 /*
- * This package illustrates the ETSU-5300 MeetUp exercise 2 assignment UML
+ * This package illustrates the ETSU-5300 MeetUp exercise 4 assignment UML
  * included with these java class files: 
      MeetUp Class Diagram.pdf
-     MeetUp Sequence Diagram 1.pdf
-     MeetUp Sequence Diagram 2.pdf
  */
 package view;
 import model.Student;
@@ -12,18 +10,18 @@ import java.util.ArrayList;
 import java.io.*;
 /**
  * This class is a test case for instantiating the abstract User through
- * either Admin or Student class and aggregating their corresponding 
+ * CarPooler, Admin, or Student class and aggregating corresponding 
  * subclasses into collections.
  * 
- * @author Jim Tarlton
+ * @author Jim Tarlton and Temitope Adeyanju
  */
 public class MeetUp {
 
     
     // private members for application
-    private static String SESSION[] = { "", ""};           // user login
+    private static String SESSION[] = { "", ""};         // user login
     private static User active_user;                       // user session instance
-    private static ArrayList<User> all_users;              // app data
+    private static ArrayList<User> all_users;     // app data
     
     
     // user interface class
@@ -35,7 +33,7 @@ public class MeetUp {
         SESSION[0] = reader.readLine();
         System.out.println("Enter password (HINT: type \"password\"):");
         SESSION[1] = reader.readLine();
-        Control ctrl = new Control();
+        Events ctrl = new Events();
         
         // condition for succesful login
         if(ctrl.login(SESSION)) {
@@ -54,12 +52,12 @@ public class MeetUp {
                 ctrl.printFriends();
                 ctrl.printSuggestions();
                 System.out.println("\n\t\t\t\t\t .....adding new scheduled item.....");
-                ctrl.buildSchedule("ART-4400", "SPRING 2018 F 05:00 PM", "Student Center");  // Carl adds schedule item
+                ctrl.buildSchedule("ART-4400", "SPRING 2018 F 05:00 PM", "Student Center");  // Carl adds Schedule item
                 System.out.println("\t\t\t\t\t .....creating a friend request.....");
-                ((Student)active_user).addFriendRequest(1003, false);                         // Carl requests friendship of Dan
+                ((Student)active_user).addFriendRequest(1003, false);                           // Carl requests friendship of Dan
                 System.out.println("\t\t\t\t\t.....accepting MeetUp suggestion.....\n");
                 if(((Student)active_user).getSuggestions().size() > 0)
-                    ((Student)active_user).getSuggestions().get(0).toggleSuggestion();  // student accepts suggestion
+                    ((Student)active_user).getSuggestions().get(0).toggleSuggestion();  // Student accepts Suggestion
                 System.out.println(active_user.toString());
             }
             if(active_user instanceof Student) {

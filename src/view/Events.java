@@ -1,25 +1,19 @@
-/*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
-*/
+
 package view;
 import model.Suggestion;
-import model.Schedule;
+import model.Course;
 import model.Friend;
 import model.Admin;
 import model.Student;
 import model.User;
 import controller.Connection;
 import controller.Factory;
-import view.*;
 
 import java.util.ArrayList;
 /**
-*
-* @author Jim
+* This class is intended for user interface functionality implementations
 */
-public class Control {
+public class Events {
 
 
     // private members
@@ -27,16 +21,16 @@ public class Control {
     private ArrayList<User> all_users;
 
 
-    // Control accessors
+    // Events accessors
     public User getActiveUser() { return active_user; }
     public ArrayList<User> getAllUsers() { return all_users; }
 
     
     // constructor
-    public Control() {}
+    public Events() {}
     
     
-    // Control mutators
+    // Events mutators
     public void setActiveUser(User active_user) {
         this.active_user = active_user;
     }
@@ -71,7 +65,7 @@ public class Control {
            if(user.getID() == user_id) {
                FriendScheduleItem.friend_id = user.getID();
                FriendScheduleItem.friend_name = user.getName();
-               for (Schedule item : ((Student)user).getSchedule()) {
+               for (Course item : ((Student)user).getSchedule()) {
                    if(item.getID() == location_id) {
                        FriendScheduleItem.schedule_id = item.getID();
                        FriendScheduleItem.schedule_name = item.getName();
@@ -126,7 +120,7 @@ public class Control {
     // create new schedule item
     public  void buildSchedule(String name, String time, String location) {
        int id = ((Student)active_user).getSchedule().size() + 1;
-       Schedule s = Factory.Schedule(id, name, time, location);
+       Course s = Factory.Course(id, name, time, location);
        ((Student)active_user).addSchedule(s);
     }
     
@@ -137,12 +131,12 @@ public class Control {
        ArrayList<Suggestion> new_suggestions = new ArrayList<>();
        if(active_user instanceof Student) {
            if((((Student)active_user).getSchedule().size() > 0)) {
-           ArrayList<Schedule> current_user_schedule = new ArrayList<>(((Student)active_user).getSchedule());
+           ArrayList<Course> current_user_schedule = new ArrayList<>(((Student)active_user).getSchedule());
            int suggestion_id = 0;
            // loop trough students collection
            for (User us : all_users) {
                if(us.getID() != active_user.getID() && us instanceof Student) {
-                   for (Schedule s : ((Student)us).getSchedule()) {
+                   for (Course s : ((Student)us).getSchedule()) {
                        for(int i = 0; i < current_user_schedule.size(); i++) {
                            // find common schedules
                            if(s.getName().equals(current_user_schedule.get(i).getName()) &&

@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package controller;
 import java.util.ArrayList;
-import static model.DBO.getDBO;
-import view.User;
+import static controller.DBO.getDBO;
+import model.User;
 
 /**
  * @author Jim

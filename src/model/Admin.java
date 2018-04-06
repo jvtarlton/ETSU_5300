@@ -1,5 +1,7 @@
 
-package view;
+package model;
+import model.Student;
+import model.User;
 import java.util.*;
 
 /**
@@ -19,7 +21,7 @@ public class Admin extends User {
     
     
     // constructor
-    protected Admin(int id, String name) {
+    public Admin(int id, String name) {
         super(id, name);
     }
     

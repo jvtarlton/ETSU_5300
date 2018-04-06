@@ -1,5 +1,5 @@
 
-package view;
+package model;
 
 /**
  * This class represents the User abstract base class for system users.

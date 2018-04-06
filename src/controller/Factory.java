@@ -1,6 +1,13 @@
 
-package view;
+package controller;
 import java.util.List;
+import model.Admin;
+import model.CarPooler;
+import model.Friend;
+import model.Schedule;
+import model.Student;
+import model.Suggestion;
+import model.User;
 
 /**
  *

@@ -1,5 +1,6 @@
 
-package view;
+package model;
+import model.User;
 import java.util.*;
 
 /**
@@ -17,19 +18,19 @@ public class CarPooler extends User {
     
     
     // constructor
-    protected CarPooler(int id, String name, boolean car) {
+    public CarPooler(int id, String name, boolean car) {
         super(id, name);
         this.car = car;
     }
     
     
     // CarPooler mutators
-    protected void addBoardPost(BoardPost new_post) {
+    public void addBoardPost(BoardPost new_post) {
         ArrayList<BoardPost> tmp = new ArrayList<>(board_posts);
         tmp.add(new_post);
         board_posts = tmp;
     }
-    protected void addGroupMember(GroupMember new_member) {
+    public void addGroupMember(GroupMember new_member) {
         ArrayList<GroupMember> tmp = new ArrayList<>(group_members);
         tmp.add(new_member);
         group_members = tmp;
@@ -37,7 +38,7 @@ public class CarPooler extends User {
     
     
     // CarPooler accessors
-    protected boolean getCarStatus() {
+    public boolean getCarStatus() {
         return this.car;
     }
     

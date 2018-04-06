@@ -3,8 +3,15 @@
 * To change this template file, choose Tools | Templates
 * and open the template in the editor.
 */
-package controller;
-import model.*;
+package view;
+import model.Suggestion;
+import model.Schedule;
+import model.Friend;
+import model.Admin;
+import model.Student;
+import model.User;
+import controller.Connection;
+import controller.Factory;
 import view.*;
 
 import java.util.ArrayList;

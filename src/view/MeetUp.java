@@ -6,7 +6,8 @@
      MeetUp Sequence Diagram 2.pdf
  */
 package view;
-import controller.Control;
+import model.Student;
+import model.User;
 import java.util.ArrayList;
 import java.io.*;
 /**

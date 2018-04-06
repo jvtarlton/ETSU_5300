@@ -1,5 +1,5 @@
 
-package view;
+package model;
 
 /**
  * This class is a Student aggregate class

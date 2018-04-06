@@ -1,5 +1,6 @@
 
-package view;
+package model;
+import model.User;
 import java.util.*;
 
 /**
@@ -20,7 +21,7 @@ public class Student extends User {
     
     
     // constructor
-    protected Student(
+    public Student(
             int id,
             String name, 
             boolean flagged,

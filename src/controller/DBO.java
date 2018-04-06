@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package controller;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 // for demo
-import view.User;
-import view.Factory;
+import model.User;
 
 /**
  * The User objects would then be instantiated in the

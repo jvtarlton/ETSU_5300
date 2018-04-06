@@ -58,6 +58,7 @@ public class DBO  implements Factory {
                         Factory.Schedule(1, "CSC-1100", "SPRING 2018 MWF 10:00 AM", "Gilbreath Hall"),
                         Factory.Schedule(2, "CSC-1300", "SPRING 2018 TTh 12:00 PM", "Dr Nicks Hall")
                     )
+                    // messages go here
                 ),
 
                 // User type Student
@@ -73,6 +74,7 @@ public class DBO  implements Factory {
                         Factory.Schedule(3, "CSC-1300", "SPRING 2018 TTh 12:00 PM", "Dr Nicks Hall"),
                         Factory.Schedule(4, "ENG-5400", "SPRING 2018 F 07:00 PM", "Sherrod Library")
                     )
+                    // messages go here
                 ),
 
                 // User type Student
@@ -85,6 +87,7 @@ public class DBO  implements Factory {
                         Factory.Schedule(1, "ENG-2500", "SPRING 2018 W 03:00 PM", "Gilbreath Hall"),
                         Factory.Schedule(2, "ENG-5400", "SPRING 2018 F 07:00 PM", "Sherrod Library")
                     )
+                    // messages go here
                 ),
 
                 // User type Student
@@ -98,6 +101,7 @@ public class DBO  implements Factory {
                         Factory.Schedule(1, "ENG-2500", "SPRING 2018 W 03:00 PM", "Gilbreath Hall"),
                         Factory.Schedule(2, "CSC-1300", "SPRING 2018 TTh 12:00 PM", "Lineberger Hall")
                     )
+                    // messages go here
                 )
                  
             )

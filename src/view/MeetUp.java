@@ -20,8 +20,8 @@ public class MeetUp {
 
     
     // private members for application
-    private static String SESSION[] = { "", ""};            // user login
-    private static User active_user;                             // user session instance
+    private static String SESSION[] = { "", ""};           // user login
+    private static User active_user;                       // user session instance
     private static ArrayList<User> all_users;              // app data
     
     

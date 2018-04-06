@@ -28,7 +28,7 @@ public final class Connection {
     
     // represents data object
     public Connection() {
-        // request user data
+        // request user data singleton
         DBO data = getDBO();
         this.all_users = parseData(data.getData());
     }

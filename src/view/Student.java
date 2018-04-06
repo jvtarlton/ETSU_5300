@@ -15,8 +15,8 @@ public class Student extends User {
     private List<Friend> friends;
     private List<Schedule> schedule;
     private List<Suggestion> suggestions;
-    private List <Message> message;
-    private ArrayList<FriendRequest> friend_requests;
+    private List<Message> message;
+    private List<FriReqProxy> friend_request_proxies;
     
     
     // constructor
@@ -47,8 +47,12 @@ public class Student extends User {
         this.suggestions = suggestions;
     }
     
+    // add new friend request via proxy
     public void addFriendRequest(int id, boolean accepted) {
-        FriendRequest f = new FriendRequest(id, accepted);
+        FriReqProxy f = new FriReqProxy(id, accepted);
+        ArrayList<FriReqProxy> tmp = new ArrayList<>();
+        tmp.add(f);
+        friend_request_proxies = tmp;
     }
     
     public void addSchedule(Schedule s) {

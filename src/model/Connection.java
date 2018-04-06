@@ -5,6 +5,7 @@
  */
 package model;
 import java.util.ArrayList;
+import static model.DBO.getDBO;
 import view.User;
 
 /**
@@ -28,7 +29,7 @@ public final class Connection {
     // represents data object
     public Connection() {
         // request user data
-        DBO data = new DBO();
+        DBO data = getDBO();
         this.all_users = parseData(data.getData());
     }
     

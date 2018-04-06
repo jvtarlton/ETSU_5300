@@ -19,11 +19,22 @@ import view.Factory;
  */
 public class DBO  implements Factory {
     
-    // Stream buffer for database communication
+    //singleton pointer
+    private static DBO singleton = null;
+    
+    // stream buffer for database communication
     private String buffer;
 
     // represents data object
-    public DBO() {}
+    private DBO() {}
+    
+    // retreives DBO singleton
+    public static DBO getDBO() {
+        if(singleton == null) {
+            singleton = new DBO();
+        }
+        return singleton;
+    }
     
     // represents data stream
     public ArrayList<User> getData() {
